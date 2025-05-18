@@ -1,0 +1,655 @@
+{%extends "base.html"%}
+{%load static%}
+     
+{%block content%}
+        <div style="background: linear-gradient(to right,rgb(241, 239, 226),rgb(245, 214, 163)); padding: 8px; text-align: center; font-size: 14px; color: #222; font-weight: bold; display: flex; justify-content: center; align-items: center;">
+            {% if gold_24k and silver_rate %}
+            <span style="margin: 0 15px;">
+            <i class="fas fa-gem" style="color: gold;"></i> Gold (24K): ₹{{ gold_24k }} / 10g
+        </span>
+        <span style="margin: 0 15px;">
+            <i class="fas fa-circle" style="color: silver;"></i> Silver: ₹{{ silver_rate }} / 10g
+        </span>
+            {% else %}
+                <span style="margin: 0 15px;">⚠ Gold & Silver rates are updating...</span>
+            {% endif %}
+        </div>
+        <!-- Slider --> 
+        <div class="slider">
+            <div class="slides">
+                {% for banner in banners %}
+                <div class="slide">
+                    <a href="{{ banner.link|default:'#' }}">
+                        <img src="{{ banner.image.url }}" alt="Banner">
+                    </a>
+                    {% if banner.discount_text %}
+                        <div class="discount-text">{{ banner.discount_text }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+        
+        <script src="{% static 'js/script.js' %}"></script> 
+        
+        
+        
+        
+        
+      
+        <!-- Slider -->
+        <!-- Categories -->
+        <section class="flat-spacing">
+            <div class="container">
+                <div class="heading-section text-center wow fadeInUp">
+                    <h3 class="heading">Popular Categories</h3>
+                </div>
+                
+                <div class="flat-collection-circle wow fadeInUp">
+                    <div dir="ltr" class="swiper tf-sw-categories" data-preview="6" data-tablet="4" data-mobile="2" data-space="15" data-space-md="20" data-space-lg="30">
+                        <div class="swiper-wrapper">
+                            
+                            {% for category in categories|slice:":6" %}
+                            <div class="collection-circle hover-img">
+                                <a href="/category/{{category.slug}}" class="img-style radius-48" style=" height: 200px;
+                                width: 180px; margin-left: 30px;" >
+                                    {% if category.image %}
+                                    <img class="lazyload" src="{{ category.image.url }}" alt="{{ category.Name }}">
+                                    {% else %}
+                                    <img class="lazyload" src="{% static 'images/placeholder.jpg' %}" alt="No Image">
+                                    {% endif %}
+                                </a>
+                                <div class="collection-content text-center">
+                                    <div>
+                                        <a href="{% url 'category' category.id %}" class="cls-title">
+                                            <h6 class="text">{{ category.name }}</h6>
+                                            <i class="icon icon-arrowUpRight"></i>    
+                                        </a>
+                                    </div>
+                                </div> 
+                            </div>
+                            {% endfor %}    
+                            
+                        
+                </div>
+            </div>
+        </section>
+        <!-- /Categories -->
+
+        
+        <!-- today -->
+
+        <section class="flat-spacing pt-0">
+            <div class="container">
+                <div class="heading-section text-center wow fadeInUp">
+                    <h3 class="heading">Today's Top Picks</h3>
+                    <p class="subheading text-secondary">Fresh styles just in! Elevate your look.</p>
+                </div>
+                <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1" data-pagination-lg="1">
+                    <div class="swiper-wrapper">
+                        {% for i in items %}
+                            <div class="swiper-slide">
+                                <div class="card-product wow fadeInUp" data-wow-delay="{{ forloop.counter0|floatformat:1 }}s">
+                                    <div class="card-product-wrapper">
+                                        <a href="/productDetail/{{i.slug}}" class="product-img">
+                                            <img class="lazyload img-product" src="{{ i.image.url }}" alt="{{ i.name }}">
+                                            <img class="lazyload img-hover" src="{{ i.hover_image.url }}" alt="{{ i.name }}">
+                                        </a>
+                                        <div class="list-product-btn">
+                                           <a href="add_to_wishlist/{{i.id}}" class="box-icon wishlist btn-icon-action">
+                                                <span class="icon icon-heart"></span>
+                                                <span class="tooltip">Wishlist</span>
+                                            </a> 
+                                            
+                                            
+                                            {% comment %} <a href="quickViewModal-{{ product.id }}" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
+                                                <span class="icon icon-eye"></span>
+                                                <span class="tooltip">Quick View</span>
+                                            </a> {% endcomment %}
+                                        </div>
+                                        <div class="list-btn-main">
+                                            <a href="add_to_cart/{{i.id}}" class="btn-main-product">Add To Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="/product/{{product.slug}}" class="title link">{{ i.name }}</a>
+                                        <span class="price">₹{{ i.price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
+                </div>
+            </div>
+        </section>
+        <!-- /today -->
+        <!-- Banner collection -->
+        <section>
+            <div class="container">
+                <div dir="ltr" class="swiper tf-sw-collection" data-preview="2" data-tablet="2" data-mobile="1" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1" data-pagination-lg="1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="collection-position radius style-lg hover-img">
+                                <a class="img-style">
+                                    <img class="lazyload"  src="{% static 'images/banner/banner-collection/banner-cls28.jpg'%}" alt="banner-cls">
+                                </a>
+                                <div class="content">
+                                    <h3 class="title wow fadeInUp"><a href="shop-default-grid.html" class="link text-white">Capsule Collection</a></h3>
+                                    <p class="desc text-white wow fadeInUp">Reserved for special occasions</p>
+                                    <div>
+                                        <a href="{%url 'productGrid'%}" class="btn-line style-white">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="collection-position radius style-lg hover-img">
+                                <a class="img-style">
+                                    <img class="lazyload" src="{% static 'images/banner/banner-collection/banner-cls29.jpg'%}" alt="banner-cls">
+                                </a>
+                                <div class="content">
+                                    <h3 class="title wow fadeInUp"><a href="shop-default-grid.html" class="link text-white">New Arrival</a></h3>
+                                    <p class="desc text-white wow fadeInUp">Reserved for special occasions</p>
+                                    <div>
+                                        <a href="{%url 'productGrid'%}" class="btn-line style-white">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="sw-pagination-collection sw-dots type-circle justify-content-center"></div>
+                </div>
+            </div>
+        </section>
+        <!-- /Banner collection -->
+        <!-- Trendy Collection -->
+        <section class="flat-spacing">
+            <div class="container">
+                <div class="heading-section text-center wow fadeInUp">
+                    <h3 class="heading">Trendy Collection</h3>
+                    <p class="subheading text-secondary">Fresh styles just in! Elevate your look.</p>
+                </div>
+                <div dir="ltr" class="swiper tf-sw-recent" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1" data-pagination-lg="1">
+                    <div class="swiper-wrapper">
+                        {% for i in items %}
+                            <div class="swiper-slide">
+                                <div class="card-product card-product-size wow fadeInUp" data-wow-delay="{{ forloop.counter0|floatformat:1 }}s">
+                                    <div class="card-product-wrapper">
+                                        <a href="/productDetail/{{i.slug}}" class="product-img">
+                                            <img class="lazyload img-product" src="{{ i.image.url }}" alt="{{ i.name }}">
+                                            <img class="lazyload img-hover" src="{{ i.hover_image.url }}" alt="{{ i.name }}">
+                                        </a>
+                                        
+                                        <div class="list-product-btn">
+                                            <a href="add_to_wishlist/{{i.id}}" class="box-icon wishlist btn-icon-action">
+                                                <span class="icon icon-heart"></span>
+                                                <span class="tooltip">Wishlist</span>
+                                            </a>
+                                           
+                                            {% comment %} <a href="#quickView" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
+                                                <span class="icon icon-eye"></span>
+                                                <span class="tooltip">Quick View</span>
+                                            </a> {% endcomment %}
+                                        </div>
+                                        <div class="list-btn-main">
+                                            <a href="add_to_cart/{{i.id}}" class="btn-main-product">Add To Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <a href="/product/{{product.slug}}" class="title link">{{ i.name }}</a>
+                                        <span class="price">₹{{ i.price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
+                    </div>
+
+                 </div>
+                <div class="sw-pagination-recent sw-dots type-circle justify-content-center"></div>
+                </div>
+            </div>
+        </section>
+        <!-- /Trendy Collection -->
+        <!-- Testimonial -->
+        <section class="flat-spacing pt-0">
+            <div class="container">
+                <div class="heading-section text-center wow fadeInUp">
+                    <h3 class="heading">Customer Say!</h3>
+                    <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>
+                </div>
+                <div dir="ltr" class="swiper tf-sw-testimonial wow fadeInUp" data-wow-delay="0.1s" data-preview="2" data-tablet="1.3" data-mobile="1" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1" data-pagination-lg="1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-item hover-img">
+                                <div class="img-style">
+                                    <img data-src="images/testimonial/tes-1.jpg" src="{% static 'images/testimonial/tes-10.jpg'%}" alt="img-testimonial">
+                                    <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <div class="content-top">
+                                        <div class="list-star-default">
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                        </div>
+                                        <p class="text-secondary">"Fantastic shop! Great selection, fair prices, and friendly staff. Highly recommended. The quality of the products is exceptional, and the prices are very reasonable!"</p>
+                                        <div class="box-author">
+                                            <div class="text-title author">Sybil Sharp</div>
+                                            <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_15758_14563)">
+                                                <path d="M6.875 11.6255L8.75 13.5005L13.125 9.12549" stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M10 18.5005C14.1421 18.5005 17.5 15.1426 17.5 11.0005C17.5 6.85835 14.1421 3.50049 10 3.50049C5.85786 3.50049 2.5 6.85835 2.5 11.0005C2.5 15.1426 5.85786 18.5005 10 18.5005Z" stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                <clipPath id="clip0_15758_14563">
+                                                <rect width="20" height="20" fill="white" transform="translate(0 0.684082)"/>
+                                                </clipPath>
+                                                </defs>
+                                            </svg> 
+                                        </div>
+                                    </div>
+                                    <div class="box-avt">
+                                        <div class="avatar avt-60 round">
+                                            <img src="{%static 'images/avatar/jewelry-1.jpg'%}" alt="avt">
+                                        </div>
+                                        <div class="box-price">
+                                            <p class="text-title text-line-clamp-1">Gold  Earrings</p>
+                                            <div class="text-button price">₹25000.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item hover-img">
+                                <div class="img-style">
+                                    <img data-src="images/testimonial/tes-2.jpg" src="{% static 'images/testimonial/tes-11.jpg'%}" alt="img-testimonial">
+                                    <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <div class="content-top">
+                                        <div class="list-star-default">
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                        </div>
+                                        <p class="text-secondary">"I absolutely love this shop! The products are high-quality and the customer service is excellent. I always leave with exactly what I need and a smile on my face."</p>
+                                        <div class="box-author">
+                                            <div class="text-title author">Mark G.</div>
+                                            <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_15758_14563)">
+                                                <path d="M6.875 11.6255L8.75 13.5005L13.125 9.12549" stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M10 18.5005C14.1421 18.5005 17.5 15.1426 17.5 11.0005C17.5 6.85835 14.1421 3.50049 10 3.50049C5.85786 3.50049 2.5 6.85835 2.5 11.0005C2.5 15.1426 5.85786 18.5005 10 18.5005Z" stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                <clipPath id="clip0_15758_14563">
+                                                <rect width="20" height="20" fill="white" transform="translate(0 0.684082)"/>
+                                                </clipPath>
+                                                </defs>
+                                            </svg> 
+                                        </div>
+                                    </div>
+                                    <div class="box-avt">
+                                        <div class="avatar avt-60 round">
+                                            <img src="{% static 'images/avatar/jewelry-2.jpg'%}" alt="avt">
+                                        </div>
+                                        <div class="box-price">
+                                            <p class="text-title text-line-clamp-1">Necklace</p>
+                                            <div class="text-button price">₹45000.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="sw-pagination-testimonial sw-dots type-circle d-flex justify-content-center"></div>
+                </div>
+            </div>
+        </section>
+       
+        
+        <!-- /Testimonial -->
+        <!-- Iconbox -->
+        <section class="flat-spacing line-top-container">
+            <div class="container">
+                <div dir="ltr" class="swiper tf-sw-iconbox" data-preview="4" data-tablet="3" data-mobile-sm="2" data-mobile="1" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-sm="2" data-pagination-md="3" data-pagination-lg="4">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="tf-icon-box">
+                                <div class="icon-box"><span class="icon icon-return"></span></div>
+                                <div class="content text-center">
+                                    <h6>14-Day Returns</h6>
+                                    <p class="text-secondary">Risk-free shopping with easy returns.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tf-icon-box">
+                                <div class="icon-box"><span class="icon icon-shipping"></span></div>
+                                <div class="content text-center">
+                                    <h6>Free Shipping</h6>
+                                    <p class="text-secondary">No extra costs, just the price you see.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tf-icon-box">
+                                <div class="icon-box"><span class="icon icon-headset"></span></div>
+                                <div class="content text-center">
+                                    <h6>24/7 Support</h6>
+                                    <p class="text-secondary">24/7 support, always here just for you</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tf-icon-box">
+                                <div class="icon-box"><span class="icon icon-sealCheck"></span></div>
+                                <div class="content text-center">
+                                    <h6>Member Discounts</h6>
+                                    <p class="text-secondary">Special prices for our loyal customers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sw-pagination-iconbox sw-dots type-circle justify-content-center"></div>
+                </div>
+            </div>
+        </section>
+        <!-- /Iconbox -->
+        <!-- Gallery shop gram -->
+        <section class="flat-spacing pt-0">
+            <div class="container">
+                <div class="heading-section text-center wow fadeInUp">
+                    <h3 class="heading">Shop Instagram</h3>
+                    <p class="subheading text-secondary">Elevate your wardrobe with fresh finds today!</p>
+                </div>
+                <div dir="ltr" class="swiper tf-sw-shop-gallery" data-preview="5" data-tablet="3" data-mobile="2" data-space-lg="10" data-space-md="10" data-space="8" data-pagination="2" data-pagination-md="3" data-pagination-lg="1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="gallery-item hover-overlay hover-img wow fadeInUp" data-wow-delay=".1s">
+                                <div class="img-style">
+                                    <img class="lazyload img-hover"  src="{%static 'images/gallery/gallery-jewelry1.jpg'%}" alt="image-gallery">
+                                </div>
+                                <a href="/product/{{product.slug}}" class="box-icon hover-tooltip"><span class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-item hover-overlay hover-img wow fadeInUp" data-wow-delay=".2s">
+                                <div class="img-style">
+                                    <img class="lazyload img-hover"  src="{% static 'images/gallery/gallery-jewelry2.jpg'%}" alt="image-gallery">
+                                </div>
+                                <a href="/product/{{product.slug}}" class="box-icon hover-tooltip"><span class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-item hover-overlay hover-img wow fadeInUp" data-wow-delay=".3s">
+                                <div class="img-style">
+                                    <img class="lazyload img-hover"  src="{% static 'images/gallery/gallery-jewelry3.jpg'%}" alt="image-gallery">
+                                </div>
+                                <a href="/product/{{product.slug}}" class="box-icon hover-tooltip"><span class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-item hover-overlay hover-img wow fadeInUp" data-wow-delay=".4s">
+                                <div class="img-style">
+                                    <img class="lazyload img-hover"  src="{%static 'images/gallery/gallery-jewelry4.jpg'%}" alt="image-gallery">
+                                </div>
+                                <a href="/product/{{product.slug}}" class="box-icon hover-tooltip"><span class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-item hover-overlay hover-img wow fadeInUp" data-wow-delay=".5s">
+                                <div class="img-style">
+                                    <img class="lazyload img-hover" src="{% static 'images/gallery/gallery-jewelry5.jpg'%}" alt="image-gallery">
+                                </div>
+                                <a href="/product/{{product.slug}}" class="box-icon hover-tooltip"><span class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sw-pagination-gallery sw-dots type-circle justify-content-center"></div>
+                </div>
+            </div>
+        </section>
+        <!-- /Gallery shop gram -->
+        <!-- Marquee -->
+        <section class="tf-marquee">
+            <div class="marquee-wrapper">
+                <div class="initial-child-container">
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Free shipping on all orders over $20.00</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Returns are free within 14 days</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <!-- 2 -->
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Free shipping on all orders over $20.00</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Returns are free within 14 days</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <!-- 3 -->
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Free shipping on all orders over $20.00</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Returns are free within 14 days</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <!-- 4 -->
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Free shipping on all orders over $20.00</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Returns are free within 14 days</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <!-- 5 -->
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Free shipping on all orders over $20.00</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Returns are free within 14 days</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <!-- 6 -->
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Free shipping on all orders over $20.00</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                    <div class="marquee-child-item">
+                        <p class="text-btn-uppercase">Returns are free within 14 days</p>
+                    </div>
+                    <div class="marquee-child-item">
+                        <span class="icon icon-lightning-line"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Marquee -->
+        <!-- NEWSLETTER -->
+        <section class="section-newsletter">
+            <div class="content">
+                <h3 class="heading text-white wow fadeInUp">Sign up and get 20% off your first order</h3>
+                <p class="text text-white wow fadeInUp" data-wow-delay="0.1s">Sign up for early sale access, new in, promotions and more</p>
+                <form class="form-newsletter subscribe-form wow fadeInUp" data-wow-delay="0.2s" id="subscribe-form" method="post" accept-charset="utf-8">
+                    <div id="subscribe-content" class="subscribe-content">
+                        <fieldset class="email">
+                            <input type="email" name="email" id="subscribe-email" class="subscribe-email" placeholder="Enter your e-mail" tabindex="0" aria-required="true" required>
+                        </fieldset>
+                        <div class="button-submit">
+                            <button class="subscribe-button text-btn-uppercase font-2" type="button" id="subscribe-button">SUBSCRIBE</button>
+                        </div>
+                    </div>
+                    <div id="subscribe-msg" class="subscribe-msg"></div>
+                </form>
+            </div>
+        </section>
+       
+        <script>
+            document.getElementById("subscribe-button").addEventListener("click", function(e) {
+                e.preventDefault();  // Prevent page reload
+            
+                let email = document.getElementById("subscribe-email").value;
+                let messageBox = document.getElementById("subscribe-msg");
+            
+                fetch("/subscribe/", {  // Django backend URL
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": getCookie("csrftoken")
+                    },
+                    body: JSON.stringify({ "email": email })
+                })
+                .then(response => response.json())  // Convert response to JSON
+                .then(data => {
+                    messageBox.style.display = "block";  // Show the message box
+                    if (data.message.includes("Thank you")) {
+                        messageBox.style.color = "green";
+                        messageBox.innerHTML = "✅ " + data.message;
+                    } else {
+                        messageBox.style.color = "red";
+                        messageBox.innerHTML = "⚠️ " + data.message;
+                    }
+                })
+                .catch(error => {
+                    messageBox.style.display = "block";
+                    messageBox.style.color = "red";
+                    messageBox.innerHTML = "❌ Connection error! Please try again.";
+                    console.error("Error:", error);
+                });
+            });
+            
+            // Function to get CSRF token
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    let cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        let cookie = cookies[i].trim();
+                        if (cookie.startsWith(name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            </script>
+
+            <!-- /NEWSLETTER -->
+        {% comment %} <div class="modal fade modal-quick-add" id="quickViewModal-{{ product.id }}">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="header">
+                        <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+                    </div>
+                    <div>
+                        <div class="tf-product-info-list">
+                            <div class="tf-product-info-item">
+                                <div class="image">
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                </div>
+                                <div class="content">
+                                    <a href="{% url 'product_detail' product.slug %}">{{ product.name }}</a>
+                                    <div class="tf-product-info-price">
+                                        <h5 class="price-on-sale font-2">${{ product.price }}</h5>
+                                        {% if product.discount_percentage %}
+                                            <div class="compare-at-price font-2">${{ product.discounted_price }}</div>
+                                            <div class="badges-on-sale text-btn-uppercase">
+                                                -{{ product.discount_percentage }}%
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tf-product-info-choose-option">
+                                <div class="variant-picker-item">
+                                    <div class="variant-picker-label mb_12">Material: <span>{{ product.material }}</span></div>
+                                </div>
+        
+                                <div class="variant-picker-item">
+                                    <div class="variant-picker-label">Sizes:</div>
+                                    <div class="variant-picker-values gap12">
+                                        {% for size in product.sizes.all %}
+                                            <label class="size-btn">{{ size.name }}</label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+        
+                                <div class="tf-product-info-quantity">
+                                    <div class="title mb_12">Quantity:</div>
+                                    <div class="wg-quantity">
+                                        <span class="btn-quantity btn-decrease">-</span>
+                                        <input class="quantity-product" type="text" name="number" value="1">
+                                        <span class="btn-quantity btn-increase">+</span>
+                                    </div>
+                                </div>
+        
+                                <div>
+                                    <a href="{% url 'add_to_cart' product.id %}" class="btn-style-2">Add to Cart</a>
+                                    <a href="{% url 'add_to_wishlist' product.id %}" class="btn-style-3">Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  {% endcomment %}
+        <!-- REMOVE EXTRA ENDFOR -->
+        
+       
+        
+
+
+       {%endblock%}
+
+
+      

@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+<div class="main-content">
+    <h3>HariOM Blogs</h3>
+    <div class="container">
+        <div class="blog-wrap">
+
+            <article class="blog-item">
+                <div class="media-post">
+                   
+                        <div class="blog-item-img" style="background-image: url('{% static "images/blog/b1.jpg" %}');"></div>
+                  
+                </div>
+                <header class="entry-header">
+                    <h1 class="entry-title post-title">
+                        <a rel="bookmark" href="{%url 'blog1'%}">
+                            Buy Jewellery online that fit into every budget, occasion, and taste
+                        </a>
+                    </h1>
+                </header>
+                <div class="post-description">
+                    <p>Buy Jewellery online that fit into every budget, occasion, and taste</p>
+                </div>
+            </article>
+
+            <article class="blog-item">
+                <div class="media-post">
+                    <div class="blog-item-img" style="background-image:  url('{% static "images/blog/b2.jpg" %}');"></div>
+                </div>
+                <header class="entry-header">
+                    <h1 class="entry-title post-title">
+                        <a rel="bookmark" href="{%url 'blog2'%}">
+                            Top 10 Reasons to buy pure Silver Coins
+                        </a>
+                    </h1>
+                </header>
+                <div class="post-description">
+                    <p>Reasons to buy silver coins</p>
+                </div>
+            </article>
+
+            <article class="blog-item">
+                <div class="media-post">
+                   
+                        <div class="blog-item-img" style="background-image: url('{% static "images/blog/b3.jpg" %}');"></div>
+                   
+                </div>
+                <header class="entry-header">
+                    <h1 class="entry-title post-title">
+                        <a rel="bookmark" href="{%url 'blog3'%}">
+                            Don't gift jewellery, gift them memory - Silver Bangles
+                        </a>
+                    </h1>
+                </header>
+                <div class="post-description">
+                    <p>Reasons to buy silver bangles</p>
+                </div>
+            </article>
+
+            <article class="blog-item">
+                <div class="media-post">
+                    
+                        <div class="blog-item-img" style="background-image: url('{% static "images/blog/b4.jpg" %}');"></div>
+                    
+                </div>
+                <header class="entry-header">
+                    <h2 class="entry-title post-title">
+                        <a rel="bookmark" href="{%url 'blog4'%}">
+                            How to understand if your Bracelet is Pure Silver?
+                        </a>
+                    </h2>
+                </header>
+                <div class="post-description">
+                    <p>Beware of many fake silver sellers out there! Follow these steps to never get cheated again.</p>
+                </div>
+            </article>
+
+            <article class="blog-item">
+                <div class="media-post">
+                    
+                        <div class="blog-item-img" style="background-image: url('{% static "images/blog/b5.jpg" %}');"></div>
+                   
+                </div>
+                <header class="entry-header">
+                    <h2 class="entry-title post-title">
+                        <a rel="bookmark" href="{%url 'blog5'%}">
+                            How to take care of silver Jewellery?
+                        </a>
+                    </h2>
+                </header>
+                <div class="post-description">
+                    <p>Steps to take proper care of your valuable silver jewellery.</p>
+                </div>
+            </article>
+
+            <article class="blog-item">
+                <div class="media-post">
+                    
+                        <div class="blog-item-img" style="background-image: url('{% static "images/blog/b6.jpg" %}');"></div>
+                    
+                </div>
+                <header class="entry-header">
+                    <h2 class="entry-title post-title">
+                        <a rel="bookmark" href="{%url 'blog6'%}">
+                            Know Why Your Silver Jewellery is Turning Black?
+                        </a>
+                    </h2>
+                </header>
+                <div class="post-description">
+                    <p>Have you ever wondered why your beautiful silver jewellery turns black after some time? Know the reason!</p>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

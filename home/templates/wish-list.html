@@ -1,0 +1,83 @@
+{%extends "base.html"%}
+{%load static%}
+     
+{%block content%}
+    
+        <!-- page-title -->
+        <div class="page-title" style="background-image: url({% static 'images/slider/slider-jewelry2.jpg' %});">
+            
+            <div class="container">
+                <h3 class="heading text-center">Your Wishlist</h3>
+                <ul class="breadcrumbs d-flex align-items-center justify-content-center">
+                    <li><a class="link" href="{%url 'home'%}">Homepage</a></li>
+                    <li><i class="icon-arrRight"></i></li>
+                    <li><a class="link" href="shop-default-grid.html">Shop</a></li>
+                    <li><i class="icon-arrRight"></i></li>
+                    <li>Wishlist</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /page-title -->
+        <!-- Section product -->
+        <form method="get" action="{% url 'wishlist' %}">
+               {% csrf_token %}
+        <section class="flat-spacing">
+            <div class="container">
+                <div class="tf-grid-layout tf-col-2 md-col-3 xl-col-4">
+                    {% for item in wishlist_items %}
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s" data-availability="{{ product.availability }}">
+                            <div class="card-product-wrapper">
+                                <a href="/productDetail/{{item.product.slug}}" class="product-img">
+                                    <img class="lazyload img-product" src="{{ item.product.image.url }}" alt="image-product">
+                                    <img class="lazyload img-hover" src="{{ item.product.image.url }}" alt="image-product">
+                                </a>
+                                <div class="list-product-btn">
+                                    <!-- Wishlist Button -->
+                                    <a href="add_to_wishlist/{{item.product.id}}" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare" class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="list-btn-main">
+                                    <a href="{% url 'add_to_cart' item.product.id %}" class="btn-main-product">Add To Cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail/{{item.product.id}}" class="title link">{{ item.product.name }}</a>
+                                <span class="price current-price">₹{{ item.product.price }}</span>
+                            </div>
+                            <a href="{% url 'remove_from_wishlist' item.product.id %}" class="box-icon wishlist btn-icon-action">
+                                <span class="icon icon-trash">✖</span>
+                                <span class="tooltip">Remove</span>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section> 
+       
+    </form>
+        
+        
+        <!-- /Section product -->
+
+        
+    {%endblock%}
+        
+       
+
+
+
+
+
+
+
+

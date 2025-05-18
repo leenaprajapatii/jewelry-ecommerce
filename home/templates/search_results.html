@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="search-results-page" style="background-color: #f8f9fa; min-height: 100vh;">
+    <div class="container py-5">
+        <!-- Search Header -->
+        <div class="search-header mb-4 p-4 bg-white rounded shadow-sm">
+            <h2 class="mb-3">Search Results for "{{ query }}"</h2>
+            <form class="form-inline" method="get" action="{% url 'search_results' %}">
+                <div class="input-group w-100">
+                    <input type="text" class="form-control" placeholder="Search products or categories..." 
+                           name="q" value="{{ query }}">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Category Results -->
+        {% if category_results %}
+        <div class="category-results mb-4 p-4 bg-white rounded shadow-sm">
+            <h4 class="mb-3">Matching Categories</h4>
+            <div class="row">
+                {% for category in category_results %}
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <a href="{{ category.get_absolute_url }}">
+                            <img src="{% if category.image %}{{ category.image.url }}{% else %}{% static 'images/category-placeholder.jpg' %}{% endif %}" 
+                                 class="card-img-top" 
+                                 alt="{{ category.name }}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ category.name }}</h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Product Results -->
+        <div class="product-results">
+            {% if results %}
+                <h4 class="mb-3">Matching Products</h4>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    {% for product in results %}
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/placeholder.jpg' %}{% endif %}" 
+                                     class="card-img-top" 
+                                     alt="{{ product.name }}">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text text-muted">{{ product.short_description|truncatechars:50 }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-secondary">{{ product.category.name }}</span>
+                                    <span class="price text-primary">${{ product.price }}</span>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-primary w-100 mt-2">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% elif not category_results %}
+                <div class="no-results text-center p-5 bg-white rounded shadow-sm">
+                    <i class="fas fa-search fa-3x mb-3 text-muted"></i>
+                    <h4>No results found for "{{ query }}"</h4>
+                    <p class="text-muted">Try different keywords or browse our categories</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

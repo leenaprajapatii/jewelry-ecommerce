@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Reports</h2>
+
+    <!-- Report Type Selection -->
+    <label>Select Report Type:</label>
+    <select id="report_type">
+        <option value="orders">Order Report</option>
+        <option value="payments">Payment Report</option>
+        <option value="feedback">Feedback Report</option>
+    </select>
+
+    <!-- Date Filters -->
+    <label>Start Date:</label>
+    <input type="date" id="start_date">
+    <label>End Date:</label>
+    <input type="date" id="end_date">
+
+    <!-- Buttons -->
+    <button onclick="fetchReport()">Fetch Report</button>
+    <a id="pdf_download" class="btn btn-success" href="#">Download PDF</a>
+
+    <!-- Report Table -->
+    <table border="1">
+        <thead>
+            <tr id="table_headers"></tr>
+        </thead>
+        <tbody id="report_table"></tbody>
+    </table>
+</div>
+
+<script>
+function fetchReport() {
+    let reportType = document.getElementById("report_type").value;
+    let startDate = document.getElementById("start_date").value;
+    let endDate = document.getElementById("end_date").value;
+
+    fetch("{% url 'fetch_report_data' %}", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded", "X-CSRFToken": "{{ csrf_token }}" },
+        body: `report_type=${reportType}&start_date=${startDate}&end_date=${endDate}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        let table = document.getElementById("report_table");
+        let headers = document.getElementById("table_headers");
+
+        table.innerHTML = "";  
+        headers.innerHTML = "";  
+
+        if (reportType === "orders") {
+            headers.innerHTML = "<th>Order ID</th><th>User</th><th>Amount</th><th>Status</th><th>Date</th>";
+            data.report_data.forEach(row => {
+                table.innerHTML += `<tr>
+                    <td>${row.id}</td>
+                    <td>${row.user__username}</td>
+                    <td>${row.total_amount}</td>
+                    <td>${row.status}</td>
+                    <td>${row.created_at}</td>
+                </tr>`;
+            });
+        } else if (reportType === "payments") {
+            headers.innerHTML = "<th>Payment ID</th><th>Order ID</th><th>User</th><th>Amount</th><th>Status</th><th>Date</th>";
+            data.report_data.forEach(row => {
+                table.innerHTML += `<tr>
+                    <td>${row.id}</td>
+                    <td>${row.order__id}</td>
+                    <td>${row.user__username}</td>
+                    <td>${row.amount}</td>
+                    <td>${row.status}</td>
+                    <td>${row.created_at}</td>
+                </tr>`;
+            });
+        } else if (reportType === "feedback") {
+            headers.innerHTML = "<th>Feedback ID</th><th>User</th><th>Order ID</th><th>Rating</th><th>Comment</th><th>Date</th>";
+            data.report_data.forEach(row => {
+                table.innerHTML += `<tr>
+                    <td>${row.id}</td>
+                    <td>${row.user__username}</td>
+                    <td>${row.order__id}</td>
+                    <td>${row.rating}</td>
+                    <td>${row.comment}</td>
+                    <td>${row.created_at}</td>
+                </tr>`;
+            });
+        }
+
+        document.getElementById("pdf_download").href = `/download-report/${reportType}/`;
+    });
+}
+</script>
+{% endblock %}

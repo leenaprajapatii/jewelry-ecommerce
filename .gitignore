@@ -1,0 +1,15 @@
+# Hide environment secrets
+.env
+
+# Hide virtual environment
+venv/
+
+# Hide Python cache files
+__pycache__/
+*.py[cod]
+
+# Hide SQLite database (optional)
+*.sqlite3
+
+# Hide VS Code settings (optional)
+.vscode/

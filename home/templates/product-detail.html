@@ -1,0 +1,513 @@
+{%extends "base.html"%}
+{%load static%}
+{%block content%}
+<!-- Fancybox CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+<!-- Fancybox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+<!-- Product_Main -->
+<section class="flat-spacing">
+   <div class="tf-main-product section-image-zoom">
+      <div class="container">
+         <div class="row">
+            <!-- Product default -->
+            <form method="get" action="productDetail/{{slug.slug}}">
+               {% csrf_token %}
+               <div class="container">
+                  <div class="row">
+                     <!-- Product Image Section -->
+                     <div class="col-md-6">
+                        <div class="tf-product-media-wrap">
+                           <div class="thumbs-slider">
+                              <!-- Main Image -->
+                              <div class="tf-product-info-list">
+                                 <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                 {% comment %} {% if product.hover_image %}
+                                 <img class="img-fluid img-hover" src="{{ product.hover_image.url }}" alt="{{ product.name }}">
+                                 {% endif %} {% endcomment %}
+                              </div>
+                              <!-- Additional Images (If Any) -->
+                              
+                           
+                              <!--  Related Product Thumbnails -->
+                              <div class="swiper tf-product-media-thumbs" 
+                                 style="display: flex; flex-direction: column; gap: 10px; max-height: 500px; overflow-y: auto;">
+                                 <div class="swiper-wrapper" style="display: flex; flex-direction: column;">
+                                    {% for image in product.images.all %}  
+                                    <div class="swiper-slide" style="width: 90px; height: 90px; cursor: pointer;">
+                                       <a href="{{ image.image.url }}" data-fancybox="gallery">
+                                       <img class="lazyload"
+                                          src="{{ image.image.url }}" 
+                                          alt="{{ product.name }}" 
+                                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 5px;">
+                                       </a>
+                                    </div>
+                                    {% empty %}
+                                    <p>No additional images available.</p>
+                                    {% endfor %}
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Product Details -->
+                     <div class="col-md-6">
+                        <div class="tf-product-info-wrap position-relative">
+                           <div class="tf-zoom-main"></div>
+                           <div class="tf-product-info-list other-image-zoom">
+                              <div class="tf-product-info-heading">
+                                 <div class="tf-product-info-name">
+                                    <div class="text text-btn-uppercase">{{ product.category.name }}</div>
+                                    <h3 class="name">{{ product.name }}</h3>
+                                    <div class="sub">
+                                       <div class="tf-product-info-rate">
+                                          <div class="list-star">
+                                             {% for _ in "12345" %}
+                                             <i class="icon icon-star"></i>
+                                             {% endfor %}
+                                          </div>
+                                          
+                                       </div>
+                                       <div class="tf-product-info-sold">
+                                          <i class="icon icon-lightning"></i>
+                                          <div class="text text-caption-1">{{ product.sold_count }} sold in last 32 hours</div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="tf-product-info-desc">
+                                    <div class="tf-product-info-price">
+                                       <h5 class="price-on-sale font-2">₹{{ product.price }}</h5>
+                                       <div class="compare-at-price font-2">₹{{ product.compare_at_price }}</div>
+                                       <div class="badges-on-sale text-btn-uppercase">
+                                          -{{ product.discount_percentage }}%
+                                       </div>
+                                    </div>
+                                    <p> {{ product.short_description }}</p>
+                                    <div class="tf-product-info-liveview">
+                                       <i class="icon icon-eye"></i>
+                                       <p class="text-caption-1"><span class="liveview-count">{{ product.live_view_count }}</span> people are viewing this right now</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="variant-picker-item">
+                                 <div class="d-flex justify-content-between mb_12">
+                                    <div class="variant-picker-label">
+                                       Size:<span class="text-title variant-picker-label-value">{{ product.size }}</span>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="variant-picker-values gap12">
+                                    {% for size in sizes %}
+                                    <input type="radio" name="size1" id="values-{{ size.name }}" value="{{ size.name }}" {% if forloop.first %}checked{% endif %}>
+                                    <label class="style-text size-btn" for="values-{{ size.name }}" data-value="{{ size.name }}">
+                                    <span class="text-title">{{ size.name }}</span>
+                                    </label>
+                                    {% empty %}
+                                    <p>No sizes available</p>
+                                    {% endfor %}
+                                 </div>
+                              </div>
+                            <div class="tf-product-info-quantity">
+                                 <div class="title mb_12">Quantity:</div>
+                                 
+                                 <div class="wg-quantity">
+                                    <span type="button" class="btn-quantity btn-decrease">-</span>
+                                    <input class="quantity-product" type="number" name="quantity" value="1" min="1" max="999">
+                                    <span type="button" class="btn-quantity btn-increase">+</span>
+                                </div>
+                                
+                              </div>
+                              <div>
+                                 <div class="tf-product-info-by-btn mb_10">
+                                    <a href="{% url 'add_to_cart' product.id %}"  class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart">
+                                    {% csrf_token %}
+                                    <span>Add to cart -&nbsp;</span>
+                                    <span class="tf-qty-price total-price">₹{{ product.price }}</span></a> 
+                                     
+                                     
+                                   
+                                   <script>
+                                   document.addEventListener('DOMContentLoaded', function() {
+                                       // DOM Elements
+                                       const quantityInput = document.querySelector('.quantity-product');
+                                       const priceElement = document.querySelector('.tf-qty-price');
+                                       const quantityContainer = document.querySelector('.wg-quantity');
+                                       
+                                       // Parse base price (with multiple fallbacks)
+                                       const basePrice = parseFloat(
+                                           priceElement.getAttribute('data-base-price') || 
+                                           priceElement.textContent.replace(/[^\d.]/g, '') || 
+                                           '0'
+                                       );
+                                       
+                                       // Update price display
+                                       function updatePrice() {
+                                           let quantity = parseInt(quantityInput.value);
+                                           
+                                           // Validate quantity
+                                           if (isNaN(quantity) || quantity < 1) {
+                                               quantity = 1;
+                                               quantityInput.value = quantity;
+                                           }
+                                           
+                                           const totalPrice = basePrice * quantity;
+                                           priceElement.textContent = '₹' + totalPrice.toLocaleString('en-IN', {
+                                               minimumFractionDigits: 2,
+                                               maximumFractionDigits: 2
+                                           });
+                                       }
+                                       
+                                       // Event delegation for buttons
+                                       quantityContainer.addEventListener('click', function(e) {
+                                           if (e.target.classList.contains('btn-decrease')) {
+                                               quantityInput.stepDown();
+                                               updatePrice();
+                                           }
+                                           else if (e.target.classList.contains('btn-increase')) {
+                                               quantityInput.stepUp();
+                                               updatePrice();
+                                           }
+                                       });
+                                       
+                                       // Input validation
+                                       quantityInput.addEventListener('change', function() {
+                                           if (this.value < 1) this.value = 1;
+                                           updatePrice();
+                                       });
+                                       
+                                       // Real-time updates
+                                       quantityInput.addEventListener('input', updatePrice);
+                                       
+                                       // Initialize
+                                       updatePrice();
+                                   });
+                                   </script>
+                                    
+            </form>
+            <a href="{% url 'add_to_wishlist' product.id %}" class="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action">
+            {% csrf_token %}
+            <span class="icon icon-heart"></span>
+            <span class="tooltip text-caption-2">Wishlist</span>
+            </a>
+            </div>
+            {% comment %} <a href="{%url 'checkout'%}" class="btn-style-3 text-btn-uppercase">Buy it now</a> {% endcomment %}
+            </div>
+            <div class="tf-product-info-help">
+            <div class="tf-product-info-extra-link">
+            <a href="#delivery_return" data-bs-toggle="modal" class="tf-product-extra-icon">
+            <div class="icon">
+            <i class="icon-shipping"></i>
+            </div>
+            <p class="text-caption-1">Delivery & Return</p>
+            </a>
+            <a href="#ask_question" data-bs-toggle="modal" class="tf-product-extra-icon">
+            <div class="icon">
+            <i class="icon-question"></i>
+            </div>
+            <p class="text-caption-1">Ask A Question</p>
+            </a>
+            <a href="#share_social" data-bs-toggle="modal" class="tf-product-extra-icon">
+            <div class="icon">
+            <i class="icon-share"></i>
+            </div>
+            <p class="text-caption-1">Share</p>
+            </a>
+            </div>
+            <div class="tf-product-info-time">
+            <div class="icon">
+            <i class="icon-timer"></i>
+            </div>
+            <p class="text-caption-1">Estimated Delivery:&nbsp;&nbsp;<span>{{ product.delivery_time_international }}</span> (International), <span>{{ product.delivery_time_domestic }}</span> (United States)</p>
+            </div>
+            <div class="tf-product-info-return">
+            <div class="icon">
+            <i class="icon-arrowClockwise"></i>
+            </div>
+            <p class="text-caption-1">Return within <span>{{ product.return_period }}</span> days of purchase. Duties & taxes are non-refundable.</p>
+            </div>
+            <div class="dropdown dropdown-store-location">
+            <div class="dropdown-title dropdown-backdrop" data-bs-toggle="dropdown" aria-haspopup="true">
+            <div class="tf-product-info-view link">
+            </div>
+            </div>
+            </div>
+            </div>
+            <ul class="tf-product-info-sku">
+            <li>
+            <p class="text-caption-1">SKU:</p>
+            <p class="text-caption-1 text-1">{{ product.sku }}</p>
+            </li>
+            </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+         </div>
+         </form>
+         <!-- /Product default -->
+         <!-- tf-product-info-list -->
+      </div>
+   </div>
+</section>
+<!-- /Product_Main -->
+<!-- Product_Description_Tabs -->
+<section class="">
+   <div class="container">
+   <div class="row">
+      <div class="col-12">
+         <div class="widget-tabs style-1">
+            <ul class="widget-menu-tab">
+               <li class="item-title active">
+                  <span class="inner">Description</span>
+               </li>
+               <li class="item-title">
+                  <span class="inner">Customer Reviews</span>
+               </li>
+               <li class="item-title">
+                  <span class="inner">Shipping & Returns</span>
+               </li>
+               <li class="item-title">
+                  <span class="inner">Return Policies</span>
+               </li>
+            </ul>
+            <div class="widget-content-tab">
+               <div class="widget-content-inner active">
+                  <div class="tab-description">
+                     <div class="right">
+                        <div class="letter-1 text-btn-uppercase mb_12">{{ product.name }}</div>
+                        <p class="mb_12 text-secondary">{{ product.long_description }}</p>
+                     </div>
+                  </div>
+               </div>
+                  
+              
+                  <div class="widget-content-inner">
+                     <div class="tab-reviews write-cancel-review-wrap">
+                        <!-- Review Summary Section -->
+                        <div class="tab-reviews-heading">
+                              <div class="top">
+                                 <div class="text-center">
+                                    <!-- Average Rating -->
+                                    <div class="number title-display">{{ product.average_rating|default:"4.9" }}</div>
+                                    <!-- Star Rating -->
+                                    <div class="list-star">
+                                          {% for _ in "12345" %}
+                                             {% if forloop.counter <= product.average_rating %}
+                                                <i class="icon icon-star"></i>
+                                             {% else %}
+                                                <i class="icon icon-star-empty"></i>
+                                             {% endif %}
+                                          {% endfor %}
+                                    </div>
+                                    <!-- Total Ratings -->
+                                    <p>({{ feedback_list.count }} Ratings)</p>
+                                 </div>
+                                 <!-- Rating Breakdown -->
+                                 <div class="rating-score">
+                                    {% for i in "54321" %}
+                                          <div class="item">
+                                             <div class="number-1 text-caption-1">{{ i }}</div>
+                                             <i class="icon icon-star"></i>
+                                             <div class="line-bg">
+                                                <div style="width: {% widthratio product.rating_counts.i feedback_list.count 100 %}%;"></div>
+                                             </div>
+                                             <div class="number-2 text-caption-1">{{ product.rating_counts.i|default:"0" }}</div>
+                                          </div>
+                                    {% endfor %}
+                                 </div>
+                              </div>
+                              <!-- Buttons for Writing/Canceling Reviews -->
+                              <div>
+                                 <div class="btn-style-4 text-btn-uppercase letter-1 btn-comment-review btn-cancel-review">Cancel Review</div>
+                                 <div class="btn-style-4 text-btn-uppercase letter-1 btn-comment-review btn-write-review">Write a review</div>
+                              </div>
+                        </div>
+
+                        <!-- Display Existing Reviews -->
+                        <div class="reply-comment style-1 cancel-review-wrap">
+                              <div class="d-flex mb_24 gap-20 align-items-center justify-content-between flex-wrap">
+                                 <h4>{{ feedback_list.count }} Comments</h4>
+                                 <!-- Sort Dropdown -->
+                               
+                              </div>
+                              <!-- Loop Through Feedback -->
+                              <div class="reply-comment-wrap">
+                                 {% for feedback in feedback_list %}
+                                 <div class="reply-comment-item">
+                                    <div class="user">
+                                          <div class="image">
+                                             <img src="{% static 'images/user.png'%}" alt="{{ feedback.user.username }}">
+                                          </div>
+                                          <div>
+                                             <h6>
+                                                <a href="#" class="link">{{ feedback.user.username }}</a>
+                                             </h6>
+                                             <div class="day text-secondary-2 text-caption-1">{{ feedback.created_at|timesince }} ago</div>
+                                          </div>
+                                    </div>
+                                    <p class="text-secondary">{{ feedback.comment }}</p>
+                                    <!-- Display Star Rating for Each Review -->
+                                    <div class="list-star">
+                                          {% for _ in "12345" %}
+                                             {% if forloop.counter <= feedback.rating %}
+                                                <i class="icon icon-star"></i>
+                                             {% else %}
+                                                <i class="icon icon-star-empty"></i>
+                                             {% endif %}
+                                          {% endfor %}
+                                    </div>
+                                 </div>
+                                 {% endfor %}
+                              </div>
+                        </div>
+
+                        <!-- Write Review Form -->
+                        <form class="form-write-review write-review-wrap" method="post" action="{% url 'submit_feedback' product.slug  %}">
+                              {% csrf_token %}
+                              <div class="heading">
+                                 <h4>Write a review:</h4>
+                                 <!-- Star Rating Input -->
+                                 <div class="list-rating-check">
+                                    {% for i in "54321" %}
+                                          <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}">
+                                          <label for="star{{ i }}" title="{{ i }} star"></label>
+                                    {% endfor %}
+                                 </div>
+                              </div>
+                              <div class="mb_32">
+                                 <!-- Review Title -->
+                                 <div class="mb_8">Review Title</div>
+                                 <fieldset class="mb_20">
+                                    <input type="text" placeholder="Give your review a title" name="title" required>
+                                 </fieldset>
+                                 <!-- Review Comment -->
+                                 <div class="mb_8">Review</div>
+                                 <fieldset class="d-flex mb_20">
+                                    <textarea rows="4" placeholder="Write your comment here" name="comment" required></textarea>
+                                 </fieldset>
+                                 <!-- User Details -->
+                                 <div class="cols mb_20">
+                                    <fieldset>
+                                          <input type="text" placeholder="Your Name (Public)" name="name" required>
+                                    </fieldset>
+                                    <fieldset>
+                                          <input type="email" placeholder="Your email (private)" name="email" required>
+                                    </fieldset>
+                                 </div>
+                                 <!-- Save Details Checkbox -->
+                                 <div class="d-flex align-items-center check-save">
+                                    <input type="checkbox" name="save_details" id="check1">
+                                    <label class="text-secondary text-caption-1" for="check1">Save my name, email, and website in this browser for the next time I comment.</label>
+                                 </div>
+                              </div>
+                              <!-- Submit Button -->
+                              
+                              <div style="width: 100%; margin-top: 20px; display: block; position: relative; top: 0; clear: both; float: none;">
+                                 <div style="display: flex; justify-content: center;">
+                                   <button class="text-btn-uppercase" type="submit" style="padding: 10px 30px; font-weight: bold;">
+                                     Submit Reviews
+                                   </button>
+                                 </div>
+                              </div>
+                               
+            
+                        </form>
+                     </div>
+                  </div>
+                        
+                  <div class="widget-content-inner">
+                     <div class="tab-shipping">
+                        <div class="w-100">
+                           <div class="text-btn-uppercase mb_12">We've got your back</div>
+                           <p class="mb_12">One delivery fee to most locations (check our Orders & Delivery page)</p>
+                           <p class="">Free returns within 14 days</p>
+                        </div>
+                        
+                        <div class="w-100">
+                           <div class="text-btn-uppercase mb_12">Estimated delivery</div>
+                           <p class="mb_6 font-2">Express: May 10 - May 17</p>
+                           <p class="font-2">Sending from India</p>
+                        </div>
+                        <div class="w-100">
+                           <div class="text-btn-uppercase mb_12">Need more information?</div>
+                           <div>
+                              <a href="#" class="link text-secondary text-decoration-underline mb_6 font-2">Orders & delivery</a>
+                           </div>
+                           
+                        </div>
+                     </div>
+                  </div>
+                  <div class="widget-content-inner">
+                     <div class="tab-policies">
+                        <div class="text-btn-uppercase mb_12">Return Policies</div>
+                        <p class="mb_12 text-secondary">At HARIoM, we stand behind the quality of our products. If you're not completely satisfied with your purchase, we offer hassle-free returns within 30 days of delivery.</p>
+                        <div class="text-btn-uppercase mb_12">Easy Exchanges or Refunds</div>
+                        <ul class="list-text type-disc mb_12 gap-6">
+                           <li class="text-secondary font-2">Exchange your item for a different size, color, or style, or receive a full refund.</li>
+                           <li class="text-secondary font-2">All returned items must be unworn, in their original packaging, and with tags attached.</li>
+                        </ul>
+                        <div class="text-btn-uppercase mb_12">Simple Process</div>
+                        <ul class="list-text type-number">
+                           <li class="text-secondary font-2">Initiate your return online or contact our customer service team for assistance.</li>
+                           <li class="text-secondary font-2">Pack your item securely and include the original packing slip.</li>
+                           <li class="text-secondary font-2">Ship your return back to us using our prepaid shipping label.</li>
+                           <li class="text-secondary font-2">Once received, your refund will be processed promptly.</li>
+                        </ul>
+                        <p class="text-secondary font-2">For any questions or concerns regarding returns, don't hesitate to reach out to our dedicated customer service team. Your satisfaction is our priority.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- /Product_Description_Tabs -->
+<!-- Ralated Products -->
+<section class="flat-spacing">
+   <div class="container flat-animate-tab">
+      <ul class="tab-product justify-content-sm-center wow fadeInUp" data-wow-delay="0s" role="tablist">
+         <li class="nav-tab-item" role="presentation">
+            <a href="#ralatedProducts" class="active" data-bs-toggle="tab">Ralated Products</a>
+         </li>
+      </ul>
+      <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1" data-pagination-lg="1">
+         <div class="swiper-wrapper">
+            {% for i in items %}
+            <div class="swiper-slide">
+               <div class="card-product wow fadeInUp" data-wow-delay="{{ forloop.counter0|floatformat:1 }}s">
+                  <div class="card-product-wrapper">
+                     <a href="/productDetail/{{i.slug}}" class="product-img">
+                     <img class="lazyload img-product" src="{{ i.image.url }}" alt="{{ i.name }}">
+                     <img class="lazyload img-hover" src="{{ i.hover_image.url }}" alt="{{ i.name }}">
+                     </a>
+                     <div class="list-product-btn">
+                        <a href="{% url 'add_to_wishlist' i.id %}" class="box-icon wishlist btn-icon-action">
+                        <span class="icon icon-heart"></span>
+                        <span class="tooltip">Wishlist</span>
+                        </a>
+                        <a href="#quickView" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
+                        <span class="icon icon-eye"></span>
+                        <span class="tooltip">Quick View</span>
+                        </a>
+                     </div>
+                     <div class="list-btn-main">
+                        <a href="{% url 'add_to_cart' i.id %}" class="btn-main-product">Add To Cart</a>
+                     </div>
+                  </div>
+                  <div class="card-product-info">
+                     <a href="/product/{{product.slug}}" class="title link">{{ i.name }}</a>
+                     <span class="price">₹{{ i.price }}</span>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+         <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
+      </div>
+   </div>
+</section>
+{%endblock%}

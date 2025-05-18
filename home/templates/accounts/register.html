@@ -1,0 +1,100 @@
+{%extends "base.html"%}
+{%load static%}
+     
+{%block content%}
+
+    <!-- #wrapper -->
+    <div id="wrapper">
+
+        
+        <!-- page-title -->
+        <div class="page-title" style="background-image: url({% static 'images/subcategory/sub4.jpg' %});">
+            <div class="container-full">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="heading text-center">Create An Account</h3>
+                        <ul class="breadcrumbs d-flex align-items-center justify-content-center">
+                            <li>
+                                <a class="link" href="index.html">Homepage</a>
+                            </li>
+                            <li>
+                                <i class="icon-arrRight"></i>
+                            </li>
+                            <li>
+                                <a class="link" href="#">Pages</a>
+                            </li>
+                            <li>
+                                <i class="icon-arrRight"></i>
+                            </li>
+                            <li>
+                                Register
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page-title -->
+
+        <!-- login -->
+        <section class="flat-spacing">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="left">
+                        <div class="heading">
+                            <h4>Register</h4>
+                        </div>
+                        
+                        
+                         {% include 'partials/_messages.html' %}
+
+                    <form method="post" action="{% url 'register' %}">
+                        <fieldset>
+                            {% csrf_token %}
+
+                            {% for field in form %}
+                                <div class="form-group">
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <small class="text-danger">{{ field.errors|striptags }}</small>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+
+                        </fieldset>
+
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <p class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                    {{ error }}
+                                </p>
+                                
+                            {% endfor %}
+                            
+                        {% endif %}
+                        <br>
+                        {% comment %} <a href="term-of-use.html" title="Terms of Service"> Terms of Use</a><br> {% endcomment %}
+                            </br>
+                        <button class="tf-btn btn-fill" type="submit"><br>
+                            <span class="text text-button">Register</span>
+                        </button>
+                    </form>
+                </div>
+                    <div class="right">
+                        <h4 class="mb_8">Already have an account?</h4>
+                        <p class="text-secondary">Welcome back. Sign in to access your personalized experience, saved preferences, and more. We're thrilled to have you with us again!</p>
+                        <a href="{% url 'login' %}" class="tf-btn btn-fill"><span class="text text-button">Login</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+    </div> 
+    <!-- /wrapper -->
+   
+
+    
+{%endblock%}

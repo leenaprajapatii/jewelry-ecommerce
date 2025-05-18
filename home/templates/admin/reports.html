@@ -1,0 +1,29 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools-items %}
+    <li>
+        <form action="{% url 'admin:admin_generate_report' %}" method="get">
+            <label>📌 Report Type:</label>
+            <select name="report_type" required>
+                <option value="Order">📦 Order</option>
+                <option value="Payment">💰 Payment</option>
+                <option value="Feedback">📝 Feedback</option>
+            </select>
+
+            &nbsp; &nbsp;
+
+            <label>📅 Start Date:</label>
+            <input type="date" name="start_date" required>
+
+            &nbsp; &nbsp;
+
+            <label>📅 End Date:</label>
+            <input type="date" name="end_date" required>
+
+            &nbsp; &nbsp;
+
+            <button type="submit">📄 Download PDF</button>
+        </form>
+    </li>
+    {{ block.super }}
+{% endblock %}

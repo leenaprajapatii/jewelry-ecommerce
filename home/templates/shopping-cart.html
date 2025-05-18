@@ -1,0 +1,373 @@
+{%extends "base.html"%}
+{%load static%}
+{%block content%}
+<!-- page-title -->
+<div class="page-title" style="background-image: url({% static 'images/slider/slider-jewelry2.jpg' %});">
+   <div class="container">
+      <h3 class="heading text-center">Shopping Cart</h3>
+      <ul class="breadcrumbs d-flex align-items-center justify-content-center">
+         <li><a class="link" href="index.html">Homepage</a></li>
+         <li><i class="icon-arrRight"></i></li>
+         <li><a class="link" href="shop-default-grid.html">Shop</a></li>
+         <li><i class="icon-arrRight"></i></li>
+         <li>Shopping Cart</li>
+      </ul>
+   </div>
+</div>
+<!-- /page-title -->
+<!-- Section cart -->
+<section class="flat-spacing">
+   <div class="container">
+      <div class="row">
+         <div class="col-xl-8">
+
+            {% if products %}
+            <form method="get" action="{% url 'cart_page' %}">
+               {% csrf_token %}
+               <table class="tf-table-page-cart">
+                  <thead>
+                     <tr>
+                        <th>Products</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in products %}
+                     <tr class="tf-cart-item file-delete">
+                        <!-- Product Image & Name -->
+                        <td class="tf-cart-item_product">
+                            <a href="/productDetail/{{ item.slug }}" class="img-box">
+                                <img src="{{ item.image.url }}" alt="product">
+                            </a>
+                            <div class="cart-info">
+                                <a href="/productDetail/{{ item.slug }}" class="cart-title link">{{ item.name }}</a>
+                                {% comment %} <div class="variant-box">
+                                    <div class="tf-select">
+                                       <select name="size_{{ product.id }}">
+                                          {% for size in sizes.product.id %}
+                                              <option value="{{ size.name }}" {% if size.name == product.selected_size %}selected{% endif %}>
+                                                  {{ size.name }}
+                                              </option>
+                                          {% endfor %}
+                                      </select>
+                                       
+                                    </div>
+                                </div> {% endcomment %}
+                            </div>
+                        </td>
+                    
+                        <!-- Price -->
+                                                   <!-- Unit Price (Per Item) -->
+                           <td class="tf-cart-item_price text-center">
+                              <span id="price_{{ item.id }}">₹{{ item.price }}</span>
+                           </td>
+
+                           <!-- Quantity Selector -->
+                         <td class="tf-cart-item_quantity">
+                              <div class="wg-quantity mx-md-auto">
+                                 <span class="btn-quantity btn-decrease" onclick="decreaseQuantity('{{ item.id }}')">-</span>
+                                 <input type="number" class="quantity-product" 
+                                       id="quantity_{{ item.id }}" 
+                                       name="quantity_{{ item.id }}" 
+                                       value="{{ item.Quantity|default:1 }}" 
+                                       min="1"
+                                       onchange="updateTotalPrice('{{ item.id }}')">
+                                 <span class="btn-quantity btn-increase" onclick="increaseQuantity('{{ item.id }}')">+</span>
+                              </div>
+                           </td> 
+                            
+                           <!-- Total Price (Unit Price * Quantity) -->
+                           <td class="tf-cart-item_total text-center">
+                              <span id="total_price_{{ item.id }}">₹{{ item.price }}</span>
+                           </td>
+
+                       
+                        <script>
+                           function updateTotalPrice(itemId) {
+                               let quantityInput = document.getElementById(`quantity_${itemId}`);
+                               let quantity = parseInt(quantityInput.value);
+                               let pricePerItem = parseFloat(document.getElementById(`price_${itemId}`).innerText.replace('₹', '').trim());
+                               
+                               if (quantity < 1) {
+                                   quantity = 1;  // Prevent negative or zero quantity
+                                   quantityInput.value = 1;
+                               }
+                       
+                               let totalPrice = pricePerItem * quantity;
+                               document.getElementById(`total_price_${itemId}`).innerText = `₹${totalPrice.toFixed(2)}`;
+                           }
+                       
+                           function increaseQuantity(itemId) {
+                               let quantityInput = document.getElementById(`quantity_${itemId}`);
+                               quantityInput.value = parseInt(quantityInput.value) + 1;
+                               updateTotalPrice(itemId);
+                           }
+                       
+                           function decreaseQuantity(itemId) {
+                               let quantityInput = document.getElementById(`quantity_${itemId}`);
+                               let newValue = parseInt(quantityInput.value) - 1;
+                       
+                               if (newValue < 1) {
+                                   newValue = 1;  // Prevent quantity from going below 1
+                               }
+                       
+                               quantityInput.value = newValue;
+                               updateTotalPrice(itemId);
+                           }
+                       </script>
+                       
+                    
+                        
+                            
+                        </td> 
+                        <td data-cart-title="Remove" class="remove-cart">
+                           <a href="{% url 'remove_from_cart' item.id %}" class="remove-item" data-id="{{ item.id }}">
+                               <span class="remove icon icon-close"></span>
+                           </a> 
+                       </td>
+                     <script>
+                        document.querySelectorAll(".remove-item").forEach(item => {
+                            item.addEventListener("click", function(event) {
+                                event.preventDefault();  // Stop default link action
+                        
+                                let itemId = this.getAttribute("data-id");  // Get product ID
+                                let row = this.closest("tr");  // Get the row of the cart item
+                        
+                                fetch(this.href, { 
+                                    method: "GET",
+                                    headers: { "X-Requested-With": "XMLHttpRequest" }  // Helps detect AJAX
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        row.remove();  // ✅ Remove row from table instantly
+                                    } else {
+                                        alert("❌ Error: " + data.message);
+                                    }
+                                })
+                                .catch(error => console.error("❌ Fetch Error:", error));
+                            });
+                        });
+                     </script>
+                        
+                       
+                    </tr>
+                    
+                     {% endfor %}
+                     {% else %}
+                     <tr>
+                        <td colspan="5" class="text-center">
+                           <p style="font-size: 20px; color: gray; padding: 20px;">Your cart is currently empty.</p>
+                        </td>
+                     </tr>
+                  {% endif %}
+                  </tbody>
+               </table>
+               
+            
+         </div>
+       
+        <div class="col-xl-4">
+         <div class="fl-sidebar-cart">
+             <div class="box-order bg-surface">
+                 <h5 class="title">Order Summary</h5>
+     
+                 <!-- Subtotal -->
+                 <div class="subtotal text-button d-flex justify-content-between align-items-center">
+                     <span>Subtotal</span>
+                     <span class="total">₹<span id="subtotal">{{ subtotal }}</span></span>
+                 </div>
+     
+                 <!-- Discount -->
+                
+     
+                 <!-- Shipping Options -->
+                 <div class="ship">
+                     <span class="text-button">Shipping</span>
+                     <div class="flex-grow-1">
+                         <fieldset class="ship-item">
+                             <input type="radio" name="ship-check" class="tf-check-rounded" id="free" value="0" checked>
+                             <label for="free">
+                                 <span>Free Shipping</span>
+                                 <span class="price">₹<span id="shipping-cost">0.00</span></span>
+                             </label>
+                         </fieldset>
+                         <fieldset class="ship-item">
+                             <input type="radio" name="ship-check" class="tf-check-rounded" id="local" value="35">
+                             <label for="local">
+                                 <span>Local:</span>
+                                 <span class="price">₹35.00</span>
+                             </label>
+                         </fieldset>
+                         <fieldset class="ship-item">
+                             <input type="radio" name="ship-check" class="tf-check-rounded" id="rate" value="50">
+                             <label for="rate">
+                                 <span>Flat Rate:</span>
+                                 <span class="price">₹50.00</span>
+                             </label>
+                         </fieldset>
+                     </div>
+                 </div>
+     
+                 <!-- Total Price -->
+                 <h5 class="total-order d-flex justify-content-between align-items-center">
+                     <span>Total</span>
+                     <span class="total">₹<span id="total-price">{{ total }}</span></span>
+                 </h5>
+     
+                 <!-- Checkout Button -->
+                 <div class="box-progress-checkout">
+                     <fieldset class="check-agree">
+                         <input type="checkbox" id="check-agree" class="tf-check-rounded">
+                         <label for="check-agree" >
+                             I agree with the <a href="term-of-use.html">terms and conditions</a>
+                         </label>
+                     </fieldset>
+                     <a href="{% url 'checkout' %}" class="tf-btn btn-reset">Process To Checkout</a>
+                     <p class="text-button text-center">Or continue shopping</p>
+
+
+                     <script>
+                        // Update individual item's total price
+                        function updateTotalPrice(itemId) {
+                          let quantityInput = document.getElementById(`quantity_${itemId}`);
+                          let quantity = parseInt(quantityInput.value);
+                          let pricePerItem = parseFloat(
+                            document.getElementById(`price_${itemId}`).innerText.replace('₹', '').replace(/,/g, '').trim()
+                          );
+                          if (quantity < 1) {
+                            quantity = 1;
+                            quantityInput.value = 1;
+                          }
+                          let totalPrice = pricePerItem * quantity;
+                          document.getElementById(`total_price_${itemId}`).innerText = `₹${totalPrice.toFixed(2)}`;
+                          updateCartSummary(); // Refresh overall summary
+                        }
+                    
+                        // Increase quantity for a given item
+                        function increaseQuantity(itemId) {
+                          let quantityInput = document.getElementById(`quantity_${itemId}`);
+                          quantityInput.value = parseInt(quantityInput.value) + 1;
+                          updateTotalPrice(itemId);
+                        }
+                    
+                        // Decrease quantity for a given item
+                        function decreaseQuantity(itemId) {
+                          let quantityInput = document.getElementById(`quantity_${itemId}`);
+                          let newValue = parseInt(quantityInput.value) - 1;
+                          if (newValue < 1) { newValue = 1; }
+                          quantityInput.value = newValue;
+                          updateTotalPrice(itemId);
+                        }
+                    
+                        // Update Order Summary (Subtotal and Total)
+                        function updateCartSummary() {
+                          let itemTotalElements = document.querySelectorAll('[id^="total_price_"]');
+                          let subtotal = 0;
+                          itemTotalElements.forEach(function(el) {
+                            let price = parseFloat(el.innerText.replace('₹', '').replace(/,/g, '').trim()) || 0;
+                            subtotal += price;
+                          });
+                          // Update Subtotal in the Order Summary
+                          document.getElementById("subtotal").innerText = subtotal.toLocaleString('en-IN', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                          });
+                    
+                          // Get Shipping cost from selected radio button
+                          let shippingRadios = document.querySelectorAll('input[name="ship-check"]');
+                          let shippingCost = 0;
+                          shippingRadios.forEach(function(radio) {
+                            if (radio.checked) {
+                              shippingCost = parseFloat(radio.value) || 0;
+                            }
+                          });
+                          document.getElementById("shipping-cost").innerText = shippingCost.toFixed(2);
+                    
+                          // Calculate Total (Subtotal + Shipping)
+                          let total = subtotal + shippingCost;
+                          document.getElementById("total-price").innerText = total.toLocaleString('en-IN', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                          });
+                        }
+                    
+                        // Attach change event to shipping radio buttons
+                        document.addEventListener("DOMContentLoaded", function() {
+                          let shippingRadios = document.querySelectorAll('input[name="ship-check"]');
+                          shippingRadios.forEach(function(radio) {
+                            radio.addEventListener('change', updateCartSummary);
+                          });
+                          updateCartSummary(); // Initial update on page load
+                        });
+                     </script>
+                 </div>
+             </div>
+         </div>
+     </div>
+ 
+     
+        
+        
+        
+        
+        
+      </div>
+   </div>
+</section>
+
+<!-- /Section cart -->
+
+<!-- Recent product -->
+<section class="flat-spacing pt-0">
+   <div class="container">
+      <div class="heading-section text-center wow fadeInUp">
+         <h4 class="heading">You may also like</h4>
+      </div>
+      <div dir="ltr" class="swiper tf-sw-recent" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1" data-pagination-lg="1">
+         <div class="swiper-wrapper">
+            {% for i in items %}
+                <div class="swiper-slide">
+                    <div class="card-product wow fadeInUp" data-wow-delay="{{ forloop.counter0|floatformat:1 }}s">
+                        <div class="card-product-wrapper">
+                            <a href="/productDetail/{{i.slug}}" class="product-img">
+                                <img class="lazyload img-product" src="{{ i.image.url }}" alt="{{ i.name }}">
+                                <img class="lazyload img-hover" src="{{ i.hover_image.url }}" alt="{{ i.name }}">
+                            </a>
+                            <div class="list-product-btn">
+                                <a href="{% url 'add_to_wishlist' i.id %}" class="box-icon wishlist btn-icon-action">
+                                    <span class="icon icon-heart"></span>
+                                    <span class="tooltip">Wishlist</span>
+                                </a>
+                                
+                                <a href="#quickView" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
+                                    <span class="icon icon-eye"></span>
+                                    <span class="tooltip">Quick View</span>
+                                </a>
+                            </div>
+                            <div class="list-btn-main">
+                                <a href="{% url 'add_to_cart' i.id %}" class="btn-main-product">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="card-product-info">
+                            <a href="#" class="title link">{{ i.name }}</a>
+                            <span class="price">₹{{ i.price }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
+      </div>
+   </div>
+</section>
+<!-- /Recent product -->
+
+<!-- /toolbar-bottom -->
+</div>
+
+
+{%endblock%}

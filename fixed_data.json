@@ -1,0 +1,2113 @@
+﻿[
+{
+  "model": "home.banner",
+  "pk": 1,
+  "fields": {
+    "discount": 10,
+    "image": "banners/baner_IqpL1Wc.png",
+    "active_status": true
+  }
+},
+{
+  "model": "home.banner",
+  "pk": 2,
+  "fields": {
+    "discount": 20,
+    "image": "banners/ban3_pNdOH7Y.png",
+    "active_status": true
+  }
+},
+{
+  "model": "home.banner",
+  "pk": 3,
+  "fields": {
+    "discount": 30,
+    "image": "banners/ban4_j1WZ2eV.png",
+    "active_status": true
+  }
+},
+{
+  "model": "home.coupon",
+  "pk": 1,
+  "fields": {
+    "code": "leena197698",
+    "discount_percentage": 20,
+    "min_order_amount": "500.00",
+    "is_active": true,
+    "expiry_date": "2025-04-25"
+  }
+},
+{
+  "model": "home.category",
+  "pk": 1,
+  "fields": {
+    "name": "Rings",
+    "slug": "rings",
+    "description": "Adorn your fingers with exquisite rings that make every moment shine.",
+    "image": "category_images/cls-jewelry2_mlqGPQN.jpg",
+    "created_at": "2025-04-14T12:28:21.959Z",
+    "updated_at": "2025-04-14T16:16:21.567Z"
+  }
+},
+{
+  "model": "home.category",
+  "pk": 2,
+  "fields": {
+    "name": "Earring",
+    "slug": "earring",
+    "description": "Elevate your style with earrings that dazzle from every angle.",
+    "image": "category_images/cls-jewelry4_iaeDsj7.jpg",
+    "created_at": "2025-04-14T16:16:56.686Z",
+    "updated_at": "2025-04-14T16:16:56.686Z"
+  }
+},
+{
+  "model": "home.category",
+  "pk": 3,
+  "fields": {
+    "name": "Bracelets",
+    "slug": "bracelets",
+    "description": "Wrap your wrist in luxury with bracelets that speak volumes.",
+    "image": "category_images/cls-jewelry3_qPd40Fa.jpg",
+    "created_at": "2025-04-14T16:17:29.148Z",
+    "updated_at": "2025-04-14T16:17:29.148Z"
+  }
+},
+{
+  "model": "home.category",
+  "pk": 4,
+  "fields": {
+    "name": "Necklaces",
+    "slug": "necklaces",
+    "description": "Elegance redefined with timeless necklaces that complete any look.",
+    "image": "category_images/cls-jewelry1_hLF0y4f.jpg",
+    "created_at": "2025-04-14T16:17:57.024Z",
+    "updated_at": "2025-04-14T16:18:07.568Z"
+  }
+},
+{
+  "model": "home.category",
+  "pk": 5,
+  "fields": {
+    "name": "Diamond Jewelry",
+    "slug": "diamond-jewelry",
+    "description": "Sparkle with the brilliance of diamonds, crafted to perfection",
+    "image": "category_images/cls-jewelry5_lv2UbhQ.jpg",
+    "created_at": "2025-04-14T16:18:43.801Z",
+    "updated_at": "2025-04-14T16:18:43.801Z"
+  }
+},
+{
+  "model": "home.category",
+  "pk": 6,
+  "fields": {
+    "name": "Gift ideas",
+    "slug": "gift-ideas",
+    "description": "The perfect gift to make every occasion unforgettable.",
+    "image": "category_images/cls-jewelry6_8hCvwqh.jpg",
+    "created_at": "2025-04-14T16:19:11.138Z",
+    "updated_at": "2025-04-14T16:19:11.138Z"
+  }
+},
+{
+  "model": "home.category",
+  "pk": 7,
+  "fields": {
+    "name": "Men",
+    "slug": "men",
+    "description": "",
+    "image": "category_images/2_vTz5YoI.jpg",
+    "created_at": "2025-04-14T16:38:28.416Z",
+    "updated_at": "2025-04-14T16:38:28.416Z"
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 1,
+  "fields": {
+    "category": 4,
+    "name": "Pendant Necklaces",
+    "slug": "pendant-necklaces",
+    "image": "subcategory_images/IMG-20250127-WA0041.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 2,
+  "fields": {
+    "category": 4,
+    "name": "Layered Necklaces",
+    "slug": "layered-necklaces",
+    "image": "subcategory_images/ctg-3_wsLcI3r.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 3,
+  "fields": {
+    "category": 4,
+    "name": "Chains",
+    "slug": "chains",
+    "image": "subcategory_images/IMG-20250127-WA0024.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 4,
+  "fields": {
+    "category": 1,
+    "name": "Solitaire Rings",
+    "slug": "solitaire-rings",
+    "image": "subcategory_images/IMG-20250127-WA0026_HNZCvhL.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 5,
+  "fields": {
+    "category": 1,
+    "name": "Casual Ring",
+    "slug": "casual-ring",
+    "image": "subcategory_images/IMG-20250127-WA0015_CRRIWqb.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 6,
+  "fields": {
+    "category": 1,
+    "name": "Minimalist Bands",
+    "slug": "minimalist-bands",
+    "image": "subcategory_images/IMG-20250201-WA0008_ZoD32IW.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "Bangle Bracelets",
+    "slug": "bangle-bracelets",
+    "image": "subcategory_images/IMG-20250123-WA0002_JjHtiHk.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 8,
+  "fields": {
+    "category": 3,
+    "name": "Chain Bracelets",
+    "slug": "chain-bracelets",
+    "image": "subcategory_images/WhatsApp_Image_2025-02-02_at_10_sdicthK.37.02_4d52861a.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 9,
+  "fields": {
+    "category": 2,
+    "name": "Stud Earrings",
+    "slug": "stud-earrings",
+    "image": "subcategory_images/sub8_jGIVjpY.jpeg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 10,
+  "fields": {
+    "category": 2,
+    "name": "Hoop Earrings",
+    "slug": "hoop-earrings",
+    "image": "subcategory_images/IMG-20250127-WA0029_xQT77Bc.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 11,
+  "fields": {
+    "category": 2,
+    "name": "Huggie Earrings",
+    "slug": "huggie-earrings",
+    "image": "subcategory_images/IMG-20250127-WA0027_84VErhv.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 12,
+  "fields": {
+    "category": 6,
+    "name": "Silver Coins",
+    "slug": "silver-coins",
+    "image": "subcategory_images/sub12_4uWpwHb.jpeg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 13,
+  "fields": {
+    "category": 6,
+    "name": "Colour Coins",
+    "slug": "colour-coins",
+    "image": "subcategory_images/sub13_K5a5C2Z.jpeg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 14,
+  "fields": {
+    "category": 5,
+    "name": "Engagement Rings",
+    "slug": "engagement-rings",
+    "image": "subcategory_images/IMG-20250201-WA0002_RsCVP6W.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 15,
+  "fields": {
+    "category": 5,
+    "name": "Designer Diamond...",
+    "slug": "designer-diamond",
+    "image": "subcategory_images/IMG-20250123-WA0017_0fLVXBv.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 16,
+  "fields": {
+    "category": 5,
+    "name": "Diamond Necklaces",
+    "slug": "diamond-necklaces",
+    "image": "subcategory_images/isg1_NAzHz3O.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 17,
+  "fields": {
+    "category": 7,
+    "name": "Egyptian Ring",
+    "slug": "egyptian-ring",
+    "image": "subcategory_images/1millidollars-433WB-Ieu6E-unsplash_YJxVN6x.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.subcategory",
+  "pk": 18,
+  "fields": {
+    "category": 7,
+    "name": "Classic bracelet",
+    "slug": "classic-bracelet",
+    "image": "subcategory_images/1millidollars-56XDEJlbyUA-unsplash_oGrlYel.jpg",
+    "description": ""
+  }
+},
+{
+  "model": "home.product",
+  "pk": 1,
+  "fields": {
+    "sku": "0000SKU-2",
+    "name": "Asher Recycled Rings 4-in-1",
+    "slug": "asher-recycled-rings-4-in-1",
+    "quantity": 66,
+    "purity": "916",
+    "material": "gold",
+    "price": "50000.00",
+    "category": 1,
+    "subcategory": 6,
+    "weight": "455.00",
+    "stock": 52,
+    "image": "products/jewelry-1_k9dPWDw.jpg",
+    "hover_image": "products/hover_images/jewelry-2_tBHrYCd.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-14T12:29:33.180Z",
+    "updated_at": "2025-04-17T06:34:08.998Z",
+    "short_description": "Elegant 916 Rings designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Rings, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 2,
+  "fields": {
+    "sku": "0000SKU-6",
+    "name": "Charm Recycled Small Hoop Earrings",
+    "slug": "charm-recycled-small-hoop-earrings",
+    "quantity": 51,
+    "purity": "916",
+    "material": "gold",
+    "price": "25000.00",
+    "category": 2,
+    "subcategory": 10,
+    "weight": "5.00",
+    "stock": 78,
+    "image": "products/jewelry-3_K9mb66Z.jpg",
+    "hover_image": "products/hover_images/jewelry-4_liJmPAY.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-15T18:08:02.200Z",
+    "updated_at": "2025-04-17T06:34:09.010Z",
+    "short_description": "Elegant 916 Earring designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Earring, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 3,
+  "fields": {
+    "sku": "0000SKU-7",
+    "name": "Mia Amalfi Bracelet Gold",
+    "slug": "mia-amalfi-bracelet-gold",
+    "quantity": 63,
+    "purity": "916",
+    "material": "gold",
+    "price": "340000.00",
+    "category": 3,
+    "subcategory": 8,
+    "weight": "6.00",
+    "stock": 47,
+    "image": "products/jewelry-6_VgQ36oN.jpg",
+    "hover_image": "products/hover_images/gallery-jewelry8_w6GZA0J.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-15T18:10:31.944Z",
+    "updated_at": "2025-04-15T18:11:14.196Z",
+    "short_description": "Elegant 916 Bracelets designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Bracelets, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 4,
+  "fields": {
+    "sku": "0000SKU-8",
+    "name": "Pilgrim Love Chain Bracelet Gold",
+    "slug": "pilgrim-love-chain-bracelet-gold",
+    "quantity": 41,
+    "purity": "916",
+    "material": "gold",
+    "price": "52000.00",
+    "category": 3,
+    "subcategory": 8,
+    "weight": "3.00",
+    "stock": 85,
+    "image": "products/jewelry-8_vTojigt.jpg",
+    "hover_image": "products/hover_images/jewelry-9_qQeLDtH.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-15T18:12:32.541Z",
+    "updated_at": "2025-04-15T18:12:40.841Z",
+    "short_description": "Elegant 916 Bracelets designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Bracelets, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 5,
+  "fields": {
+    "sku": "0000SKU-9",
+    "name": "Pilgrim Caro Recycled Semi-Hoop",
+    "slug": "pilgrim-caro-recycled-semi-hoop",
+    "quantity": 79,
+    "purity": "916",
+    "material": "gold",
+    "price": "610000.00",
+    "category": 2,
+    "subcategory": 10,
+    "weight": "3.00",
+    "stock": 56,
+    "image": "products/oscar-ramirez-i0bmEDdMFIQ-unsplash.jpg",
+    "hover_image": "products/hover_images/jewelry-12_YrePuF4.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-15T18:17:20.250Z",
+    "updated_at": "2025-04-16T06:40:57.685Z",
+    "short_description": "Elegant 916 Earring designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Earring, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 6,
+  "fields": {
+    "sku": "0000SKU-10",
+    "name": "Charm Recycled Triangle Pendant",
+    "slug": "charm-recycled-triangle-pendant",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "56000.00",
+    "category": 5,
+    "subcategory": 15,
+    "weight": "2.00",
+    "stock": 15,
+    "image": "products/jewelry-13_fYHD3Ii.jpg",
+    "hover_image": "products/hover_images/jewelry-14_blGpxax.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-15T18:19:02.689Z",
+    "updated_at": "2025-04-15T18:19:02.689Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 7,
+  "fields": {
+    "sku": "0000SKU-11",
+    "name": "Penelope Recycled Earrings",
+    "slug": "penelope-recycled-earrings",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "45000.00",
+    "category": 2,
+    "subcategory": 10,
+    "weight": "4.00",
+    "stock": 20,
+    "image": "products/jewelry-15_WDtHZqz.jpg",
+    "hover_image": "products/hover_images/jewelry-16_mv6bPiv.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-15T18:20:20.746Z",
+    "updated_at": "2025-04-15T18:20:20.746Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 8,
+  "fields": {
+    "sku": "0000SKU-12",
+    "name": "Faux-leather trousers",
+    "slug": "faux-leather-trousers",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "51000.00",
+    "category": 5,
+    "subcategory": 15,
+    "weight": "3.00",
+    "stock": 45,
+    "image": "products/jewelry-17_rdGfWae.jpg",
+    "hover_image": "products/hover_images/jewelry-18_fxKf6bL.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-15T18:21:25.370Z",
+    "updated_at": "2025-04-15T18:21:25.370Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 9,
+  "fields": {
+    "sku": "0000SKU-21",
+    "name": "Peacock Glory Colour Coin",
+    "slug": "peacock-glory-colour-coin",
+    "quantity": 78,
+    "purity": "925",
+    "material": "gold",
+    "price": "100.00",
+    "category": 6,
+    "subcategory": 13,
+    "weight": "2.00",
+    "stock": 47,
+    "image": "products/s-l400.jpg",
+    "hover_image": "products/hover_images/s-l400.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T07:20:50.537Z",
+    "updated_at": "2025-04-16T09:18:18.594Z",
+    "short_description": "Elegant 925 Gift ideas designed for beauty and comfort.",
+    "long_description": "Introducing the 925 Gift ideas, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 10,
+  "fields": {
+    "sku": "0000SKU-22",
+    "name": "silver coin",
+    "slug": "silver-coin",
+    "quantity": 100,
+    "purity": "916",
+    "material": "silver",
+    "price": "550.00",
+    "category": 6,
+    "subcategory": 13,
+    "weight": "2.00",
+    "stock": 54,
+    "image": "products/images_3_LRcpUvH.jpeg",
+    "hover_image": "products/hover_images/images_4.jpeg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:20:44.354Z",
+    "updated_at": "2025-04-16T09:23:04.990Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 11,
+  "fields": {
+    "sku": "0000SKU-23",
+    "name": "Glow Ring",
+    "slug": "glow-ring",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "210000.00",
+    "category": 1,
+    "subcategory": 5,
+    "weight": "2.00",
+    "stock": 15,
+    "image": "products/IMG-20250201-WA0003.jpg",
+    "hover_image": "products/hover_images/IMG-20250201-WA0003.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:26:25.252Z",
+    "updated_at": "2025-04-16T14:44:00.901Z",
+    "short_description": "Elegant 916 Rings designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Rings, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 12,
+  "fields": {
+    "sku": "0000SKU-24",
+    "name": "Vow Ring",
+    "slug": "vow-ring",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "15000.00",
+    "category": 1,
+    "subcategory": 5,
+    "weight": "5.00",
+    "stock": 32,
+    "image": "products/IMG-20250127-WA0016_W1dw24j.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0016.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:29:32.772Z",
+    "updated_at": "2025-04-16T09:30:59.195Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 13,
+  "fields": {
+    "sku": "0000SKU-25",
+    "name": "Bliss Band",
+    "slug": "bliss-band",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "23000.00",
+    "category": 1,
+    "subcategory": 6,
+    "weight": "3.00",
+    "stock": 41,
+    "image": "products/oscar-ramirez-l0dcx6fwRh8-unsplash.jpg",
+    "hover_image": "products/hover_images/oscar-ramirez-l0dcx6fwRh8-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:33:31.253Z",
+    "updated_at": "2025-04-16T09:34:10.011Z",
+    "short_description": "Elegant 916 Rings designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Rings, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 14,
+  "fields": {
+    "sku": "0000SKU-26",
+    "name": "Twinkle Band",
+    "slug": "twinkle-band",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "220000.00",
+    "category": 1,
+    "subcategory": 6,
+    "weight": "5.00",
+    "stock": 55,
+    "image": "products/IMG-20250201-WA0008.jpg",
+    "hover_image": "products/hover_images/IMG-20250201-WA0004.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:36:18.255Z",
+    "updated_at": "2025-04-16T09:36:18.255Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 15,
+  "fields": {
+    "sku": "0000SKU-27",
+    "name": "Blush Rose Solitaire",
+    "slug": "blush-rose-solitaire",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "31000.00",
+    "category": 1,
+    "subcategory": 4,
+    "weight": "5.00",
+    "stock": 56,
+    "image": "products/IMG-20250127-WA0026.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0026.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:38:49.029Z",
+    "updated_at": "2025-04-16T09:39:01.533Z",
+    "short_description": "Elegant 916 Rings designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Rings, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 16,
+  "fields": {
+    "sku": "0000SKU-28",
+    "name": "simple Solitaire",
+    "slug": "simple-solitaire",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "11000.00",
+    "category": 1,
+    "subcategory": 4,
+    "weight": "3.00",
+    "stock": 41,
+    "image": "products/prahant-memories-ppoafBSZJ3Q-unsplash.jpg",
+    "hover_image": "products/hover_images/prahant-memories-ppoafBSZJ3Q-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:42:29.437Z",
+    "updated_at": "2025-04-16T09:42:40.177Z",
+    "short_description": "Elegant 916 Rings designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Rings, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 17,
+  "fields": {
+    "sku": "0000SKU-30",
+    "name": "Golden Wink Ring",
+    "slug": "golden-wink-ring",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "21000.00",
+    "category": 1,
+    "subcategory": 5,
+    "weight": "3.00",
+    "stock": 50,
+    "image": "products/oscar-ramirez-PAnvh3WGzeA-unsplash_9ASX4kB.jpg",
+    "hover_image": "products/hover_images/oscar-ramirez-PAnvh3WGzeA-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:45:01.377Z",
+    "updated_at": "2025-04-16T09:45:09.647Z",
+    "short_description": "Elegant 916 Rings designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Rings, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 18,
+  "fields": {
+    "sku": "0000SKU-31",
+    "name": "Queen's Mirage Ring",
+    "slug": "queens-mirage-ring",
+    "quantity": 100,
+    "purity": "925",
+    "material": "silver",
+    "price": "15000.00",
+    "category": 1,
+    "subcategory": 6,
+    "weight": "3.20",
+    "stock": 42,
+    "image": "products/IMG-20250201-WA0007.jpg",
+    "hover_image": "products/hover_images/IMG-20250201-WA0007.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:47:07.501Z",
+    "updated_at": "2025-04-16T09:47:07.501Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 19,
+  "fields": {
+    "sku": "0000SKU-32",
+    "name": "Casual Charm Ring",
+    "slug": "casual-charm-ring",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "22000.00",
+    "category": 1,
+    "subcategory": 5,
+    "weight": "4.10",
+    "stock": 41,
+    "image": "products/oscar-ramirez-iILZqeKhzXE-unsplash_oHUvO4A.jpg",
+    "hover_image": "products/hover_images/oscar-ramirez-iILZqeKhzXE-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:49:53.650Z",
+    "updated_at": "2025-04-16T09:50:03.053Z",
+    "short_description": "Elegant 916 Rings designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Rings, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 20,
+  "fields": {
+    "sku": "0000SKU-33",
+    "name": "Golden Swing",
+    "slug": "golden-swing",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "40000.00",
+    "category": 2,
+    "subcategory": 11,
+    "weight": "3.50",
+    "stock": 12,
+    "image": "products/IMG-20250127-WA0027.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0027.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:55:14.633Z",
+    "updated_at": "2025-04-16T09:55:14.633Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 21,
+  "fields": {
+    "sku": "0000SKU-34",
+    "name": "Moonlit Dangle",
+    "slug": "moonlit-dangle",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "26000.00",
+    "category": 2,
+    "subcategory": 11,
+    "weight": "5.00",
+    "stock": 45,
+    "image": "products/IMG-20250127-WA0037.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0037.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:56:54.167Z",
+    "updated_at": "2025-04-16T09:57:08.546Z",
+    "short_description": "Elegant 916 Earring designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Earring, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 22,
+  "fields": {
+    "sku": "0000SKU-35",
+    "name": "Petal Pop Studs",
+    "slug": "petal-pop-studs",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "41000.00",
+    "category": 2,
+    "subcategory": 9,
+    "weight": "4.00",
+    "stock": 55,
+    "image": "products/oscar-ramirez-pQYSjhWz4cQ-unsplash_iQe0Zs9.jpg",
+    "hover_image": "products/hover_images/oscar-ramirez-pQYSjhWz4cQ-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T09:59:56.003Z",
+    "updated_at": "2025-04-16T09:59:56.003Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 23,
+  "fields": {
+    "sku": "0000SKU-36",
+    "name": "Stargleam Dots",
+    "slug": "stargleam-dots",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "51000.00",
+    "category": 2,
+    "subcategory": 9,
+    "weight": "4.00",
+    "stock": 25,
+    "image": "products/IMG-20250127-WA0028.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0028.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:01:43.783Z",
+    "updated_at": "2025-04-16T10:01:43.783Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 24,
+  "fields": {
+    "sku": "0000SKU-37",
+    "name": "Tiny Grace Chain",
+    "slug": "tiny-grace-chain",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "55000.00",
+    "category": 3,
+    "subcategory": 8,
+    "weight": "5.00",
+    "stock": 11,
+    "image": "products/WhatsApp_Image_2025-02-02_at_10_SnlKOuu.37.02_4d52861a.jpg",
+    "hover_image": "products/hover_images/WhatsApp_Image_2025-02-02_at_10.37.02_4d52861a.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:04:31.856Z",
+    "updated_at": "2025-04-16T10:04:31.856Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 25,
+  "fields": {
+    "sku": "0000SKU-38",
+    "name": "Elegant Thread",
+    "slug": "elegant-thread",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "54000.00",
+    "category": 3,
+    "subcategory": 8,
+    "weight": "5.00",
+    "stock": 32,
+    "image": "products/IMG-20250127-WA0010_jR7DJmE.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0010.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:06:06.184Z",
+    "updated_at": "2025-04-16T10:06:06.184Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 26,
+  "fields": {
+    "sku": "0000SKU-39",
+    "name": "Casual Spark Link",
+    "slug": "casual-spark-llink",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "25000.00",
+    "category": 3,
+    "subcategory": 8,
+    "weight": "3.00",
+    "stock": 12,
+    "image": "products/IMG-20250127-WA0008.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0008.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:08:16.022Z",
+    "updated_at": "2025-04-16T10:08:38.209Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 27,
+  "fields": {
+    "sku": "0000SKU-40",
+    "name": "Twinkle Tie",
+    "slug": "twinkle-tie",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "34000.00",
+    "category": 3,
+    "subcategory": 8,
+    "weight": "4.00",
+    "stock": 12,
+    "image": "products/IMG-20250123-WA0008.jpg",
+    "hover_image": "products/hover_images/IMG-20250123-WA0008_F2AjkeD.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:10:35.600Z",
+    "updated_at": "2025-04-16T10:10:35.600Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 28,
+  "fields": {
+    "sku": "0000SKU-41",
+    "name": "Serene Circle",
+    "slug": "serene-circle",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "65000.00",
+    "category": 3,
+    "subcategory": 7,
+    "weight": "6.00",
+    "stock": 12,
+    "image": "products/IMG-20250123-WA0002_hT8nbqF.jpg",
+    "hover_image": "products/hover_images/IMG-20250123-WA0002.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:11:56.972Z",
+    "updated_at": "2025-04-16T10:11:56.972Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 29,
+  "fields": {
+    "sku": "0000SKU-42",
+    "name": "Luxe Loop Bangle",
+    "slug": "luxe-loop-bangle",
+    "quantity": 100,
+    "purity": "925",
+    "material": "silver",
+    "price": "25000.00",
+    "category": 3,
+    "subcategory": 7,
+    "weight": "5.00",
+    "stock": 13,
+    "image": "products/WhatsApp_Image_2025-02-02_at_10.25.49_44b3a7cc.jpg",
+    "hover_image": "products/hover_images/WhatsApp_Image_2025-02-02_at_10.25.49_44b3a7cc.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:13:18.330Z",
+    "updated_at": "2025-04-16T10:13:18.330Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 30,
+  "fields": {
+    "sku": "0000SKU-43",
+    "name": "Soft Gold Curve",
+    "slug": "soft-gold-curve",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "55000.00",
+    "category": 3,
+    "subcategory": 7,
+    "weight": "4.00",
+    "stock": 60,
+    "image": "products/IMG-20250127-WA0018.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0018.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:14:46.492Z",
+    "updated_at": "2025-04-16T10:14:46.492Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 31,
+  "fields": {
+    "sku": "0000SKU-44",
+    "name": "Bare Bold Bangle",
+    "slug": "bare-bold-bangle",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "69000.00",
+    "category": 3,
+    "subcategory": 7,
+    "weight": "6.00",
+    "stock": 9,
+    "image": "products/albina-white-qILRFVJmsBc-unsplash.jpg",
+    "hover_image": "products/hover_images/albina-white-qILRFVJmsBc-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:16:12.336Z",
+    "updated_at": "2025-04-16T10:16:12.336Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 32,
+  "fields": {
+    "sku": "0000SKU-46",
+    "name": "Serenity Layers",
+    "slug": "serenity-layers",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "65000.00",
+    "category": 4,
+    "subcategory": 2,
+    "weight": "5.50",
+    "stock": 5,
+    "image": "products/IMG-20250127-WA0014.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0014.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:20:38.561Z",
+    "updated_at": "2025-04-16T10:20:38.561Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 33,
+  "fields": {
+    "sku": "0000SKU-47",
+    "name": "Eternal Layers",
+    "slug": "eternal-layers",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "67000.00",
+    "category": 4,
+    "subcategory": 2,
+    "weight": "6.00",
+    "stock": 2,
+    "image": "products/oscar-ramirez-Cf6w-7b8Lxk-unsplash_ibBYbvz.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0009_h4xvIfu.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:22:00.709Z",
+    "updated_at": "2025-04-16T10:23:10.221Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 34,
+  "fields": {
+    "sku": "0000SKU-48",
+    "name": "Mystic Cascade",
+    "slug": "mystic-cascade",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "47000.00",
+    "category": 4,
+    "subcategory": 2,
+    "weight": "5.00",
+    "stock": 5,
+    "image": "products/jasmin-chew-WKD2vIe8Rb0-unsplash.jpg",
+    "hover_image": "products/hover_images/jasmin-chew-WKD2vIe8Rb0-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:24:31.690Z",
+    "updated_at": "2025-04-16T10:24:31.690Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 35,
+  "fields": {
+    "sku": "0000SKU-49",
+    "name": "Golden Twilight Chain",
+    "slug": "golden-twilight-chain",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "70000.00",
+    "category": 4,
+    "subcategory": 3,
+    "weight": "10.00",
+    "stock": 4,
+    "image": "products/IMG-20250127-WA0024.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0024.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:27:33.798Z",
+    "updated_at": "2025-04-16T15:11:47.707Z",
+    "short_description": "Elegant 916 Necklaces designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Necklaces, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 36,
+  "fields": {
+    "sku": "0000SKU-50",
+    "name": "Pure Grace Chain",
+    "slug": "pure-grace-chain",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "80000.00",
+    "category": 4,
+    "subcategory": 3,
+    "weight": "7.00",
+    "stock": 25,
+    "image": "products/IMG-20250127-WA0023_hyU4mBW.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0023.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:28:52.720Z",
+    "updated_at": "2025-04-16T10:28:52.720Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 37,
+  "fields": {
+    "sku": "0000SKU-51",
+    "name": "Elegant Loop Chain",
+    "slug": "elegant-loop-chain",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "88000.00",
+    "category": 4,
+    "subcategory": 3,
+    "weight": "7.00",
+    "stock": 3,
+    "image": "products/IMG-20250127-WA0012.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0012.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:30:06.245Z",
+    "updated_at": "2025-04-16T10:30:06.245Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 38,
+  "fields": {
+    "sku": "0000SKU-52",
+    "name": "Golden Charm Pendant",
+    "slug": "golden-charm-pendant",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "75000.00",
+    "category": 4,
+    "subcategory": 1,
+    "weight": "6.00",
+    "stock": 14,
+    "image": "products/IMG-20250127-WA0041_XLLl4ZC.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0041_sAEIXUt.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:31:52.812Z",
+    "updated_at": "2025-04-16T10:32:54.863Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 39,
+  "fields": {
+    "sku": "0000SKU-53",
+    "name": "Minimalist Pendant",
+    "slug": "minimalist-pendant",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "57000.00",
+    "category": 4,
+    "subcategory": 1,
+    "weight": "5.00",
+    "stock": 4,
+    "image": "products/prahant-memories-cM9YmUlECWY-unsplash.jpg",
+    "hover_image": "products/hover_images/prahant-memories-cM9YmUlECWY-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:33:59.071Z",
+    "updated_at": "2025-04-16T10:33:59.071Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 40,
+  "fields": {
+    "sku": "0000SKU-54",
+    "name": "Radiant Heart Pendant",
+    "slug": "radiant-heart-pendant",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "56000.00",
+    "category": 4,
+    "subcategory": 1,
+    "weight": "5.00",
+    "stock": 4,
+    "image": "products/oscar-ramirez-C4eGACn1Szo-unsplash.jpg",
+    "hover_image": "products/hover_images/oscar-ramirez-C4eGACn1Szo-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:35:14.026Z",
+    "updated_at": "2025-04-16T10:35:14.026Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 41,
+  "fields": {
+    "sku": "0000SKU-55",
+    "name": "Luxe Diamond Pendant",
+    "slug": "luxe-diamond-pendant",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "65000.00",
+    "category": 4,
+    "subcategory": 1,
+    "weight": "4.00",
+    "stock": 55,
+    "image": "products/oscar-ramirez-oVl6VRn1BEQ-unsplash.jpg",
+    "hover_image": "products/hover_images/oscar-ramirez-oVl6VRn1BEQ-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:36:38.561Z",
+    "updated_at": "2025-04-16T10:36:38.561Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 42,
+  "fields": {
+    "sku": "0000SKU-56",
+    "name": "Diamond Enchantment",
+    "slug": "diamond-enchantment",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "1000000.00",
+    "category": 5,
+    "subcategory": 15,
+    "weight": "5.00",
+    "stock": 1,
+    "image": "products/IMG-20250123-WA0017_nQtfwg4.jpg",
+    "hover_image": "products/hover_images/IMG-20250123-WA0017.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:40:14.489Z",
+    "updated_at": "2025-04-16T10:42:48.606Z",
+    "short_description": "Elegant 916 Diamond Jewelry designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Diamond Jewelry, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 43,
+  "fields": {
+    "sku": "0000SKU-57",
+    "name": "EternityÆs Touch",
+    "slug": "eternitys-touch",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "65000.00",
+    "category": 5,
+    "subcategory": 15,
+    "weight": "5.00",
+    "stock": 2,
+    "image": "products/IMG-20250123-WA0006_K2k8LrR.jpg",
+    "hover_image": "products/hover_images/IMG-20250123-WA0006.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:42:29.371Z",
+    "updated_at": "2025-04-16T10:42:39.308Z",
+    "short_description": "Elegant 916 Diamond Jewelry designed for beauty and comfort.",
+    "long_description": "Introducing the 916 Diamond Jewelry, a symbol of elegance and timeless sophistication. Crafted from the finest gold, this piece radiates warmth, prosperity, and a golden glow that never fades. Each curve and contour reflects the craftsmanship of master artisans, ensuring a creation as eternal as love itself. Designed with an unwavering commitment to excellence, this piece is more than jewelryùit is an heirloom in the making. Perfectly suited for grand celebrations, romantic moments, or simply as a daily indulgence, it embodies luxury at its finest.",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 44,
+  "fields": {
+    "sku": "0000SKU-59",
+    "name": "Timeless Bond",
+    "slug": "timeless-bond",
+    "quantity": 100,
+    "purity": "925",
+    "material": "silver",
+    "price": "55000.00",
+    "category": 5,
+    "subcategory": 14,
+    "weight": "6.00",
+    "stock": 4,
+    "image": "products/IMG-20250127-WA0020.jpg",
+    "hover_image": "products/hover_images/chuttersnap-NYqEk7a42yc-unsplash.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:44:59.028Z",
+    "updated_at": "2025-04-16T10:44:59.028Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 45,
+  "fields": {
+    "sku": "0000SKU-60",
+    "name": "Golden Crown",
+    "slug": "golden-crown",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "45000.00",
+    "category": 5,
+    "subcategory": 14,
+    "weight": "4.00",
+    "stock": 4,
+    "image": "products/IMG-20250201-WA0002.jpg",
+    "hover_image": "products/hover_images/IMG-20250201-WA0002.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:48:09.682Z",
+    "updated_at": "2025-04-16T10:48:09.682Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 46,
+  "fields": {
+    "sku": "0000SKU-66",
+    "name": "Pure Circle",
+    "slug": "pure-circle",
+    "quantity": 100,
+    "purity": "916",
+    "material": "gold",
+    "price": "61000.00",
+    "category": 5,
+    "subcategory": 14,
+    "weight": "6.00",
+    "stock": 2,
+    "image": "products/IMG-20250127-WA0019.jpg",
+    "hover_image": "products/hover_images/IMG-20250127-WA0019.jpg",
+    "average_rating": 0.0,
+    "created_at": "2025-04-16T10:49:27.319Z",
+    "updated_at": "2025-04-16T10:49:27.319Z",
+    "short_description": "",
+    "long_description": "",
+    "sizes": []
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 1,
+  "fields": {
+    "product": 2,
+    "image": "products/multiple_images/jewelry-3.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 3,
+  "fields": {
+    "product": 3,
+    "image": "products/multiple_images/jewelry-6.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 4,
+  "fields": {
+    "product": 4,
+    "image": "products/multiple_images/jewelry-9.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 5,
+  "fields": {
+    "product": 7,
+    "image": "products/multiple_images/jewelry-15.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 6,
+  "fields": {
+    "product": 8,
+    "image": "products/multiple_images/jewelry-18.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 7,
+  "fields": {
+    "product": 11,
+    "image": "products/multiple_images/IMG-20250201-WA0003.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 8,
+  "fields": {
+    "product": 13,
+    "image": "products/multiple_images/oscar-ramirez-l0dcx6fwRh8-unsplash.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 9,
+  "fields": {
+    "product": 14,
+    "image": "products/multiple_images/IMG-20250201-WA0008.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 10,
+  "fields": {
+    "product": 15,
+    "image": "products/multiple_images/IMG-20250127-WA0026.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 11,
+  "fields": {
+    "product": 16,
+    "image": "products/multiple_images/prahant-memories-ppoafBSZJ3Q-unsplash.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 12,
+  "fields": {
+    "product": 17,
+    "image": "products/multiple_images/oscar-ramirez-PAnvh3WGzeA-unsplash.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 13,
+  "fields": {
+    "product": 18,
+    "image": "products/multiple_images/IMG-20250201-WA0007.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 14,
+  "fields": {
+    "product": 19,
+    "image": "products/multiple_images/oscar-ramirez-iILZqeKhzXE-unsplash.jpg"
+  }
+},
+{
+  "model": "home.productimage",
+  "pk": 15,
+  "fields": {
+    "product": 24,
+    "image": "products/multiple_images/WhatsApp_Image_2025-02-02_at_10.37.02_4d52861a.jpg"
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 11,
+  "fields": {
+    "user": 1,
+    "product": 1,
+    "quantity": 3,
+    "added_at": "2025-04-17T04:19:48.410Z",
+    "payment_id": "Not Available",
+    "razorpay_order_id": "Not Available"
+  }
+},
+{
+  "model": "home.order",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "fname": "leena",
+    "lname": "Prajapati",
+    "email": "harsu2422020@gmail.com",
+    "phone": "None",
+    "address": "street",
+    "city": "city",
+    "state": "Arizona",
+    "country": "Canada",
+    "pincode": "0",
+    "order_date": "2025-04-14T12:30:45.433Z",
+    "payment_mode": "Paid by Razorpay",
+    "payment_id": "pay_QIwED3N3V2jv3x",
+    "message": "you got this",
+    "tracking_no": "ORD1690336",
+    "created_at": "2025-04-14T12:30:45.433Z",
+    "total_price": "50000.00",
+    "status": "Pending",
+    "shipped_time": "2025-04-17T03:02:39Z",
+    "out_for_delivery_time": "2025-04-17T03:03:02Z",
+    "delivered_time": "2025-04-17T03:03:08Z",
+    "courier_name": null
+  }
+},
+{
+  "model": "home.order",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "fname": "leena",
+    "lname": "Prajapati",
+    "email": "harsu2422020@gmail.com",
+    "phone": "None",
+    "address": "street",
+    "city": "city",
+    "state": "Arizona",
+    "country": "Canada",
+    "pincode": "0",
+    "order_date": "2025-04-15T08:33:36.422Z",
+    "payment_mode": "Paid by Razorpay",
+    "payment_id": "pay_QJGimXW9BHJp1J",
+    "message": null,
+    "tracking_no": "ORD8473233",
+    "created_at": "2025-04-15T08:33:36.422Z",
+    "total_price": "150000.00",
+    "status": "Paid",
+    "shipped_time": null,
+    "out_for_delivery_time": null,
+    "delivered_time": null,
+    "courier_name": null
+  }
+},
+{
+  "model": "home.order",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "fname": "leena",
+    "lname": "sitaa",
+    "email": "example@email.com",
+    "phone": "7383790196",
+    "address": "street",
+    "city": "city",
+    "state": "Arizona",
+    "country": "Canada",
+    "pincode": "0",
+    "order_date": "2025-04-15T12:34:17.819Z",
+    "payment_mode": "Paid by Razorpay",
+    "payment_id": "pay_QJKp4OvHvbrWVE",
+    "message": null,
+    "tracking_no": "ORD4981564",
+    "created_at": "2025-04-15T12:34:17.819Z",
+    "total_price": "150000.00",
+    "status": "Paid",
+    "shipped_time": null,
+    "out_for_delivery_time": null,
+    "delivered_time": null,
+    "courier_name": null
+  }
+},
+{
+  "model": "home.order",
+  "pk": 4,
+  "fields": {
+    "user": 1,
+    "fname": "leena",
+    "lname": "sitaa",
+    "email": "example@email.com",
+    "phone": "7383790196",
+    "address": "krupakant",
+    "city": "ahmedabad",
+    "state": "Arizona",
+    "country": "Canada",
+    "pincode": "123",
+    "order_date": "2025-04-15T13:31:23.579Z",
+    "payment_mode": "Paid by Razorpay",
+    "payment_id": "pay_QJLnO3DcA9ik5B",
+    "message": null,
+    "tracking_no": "ORD2711732",
+    "created_at": "2025-04-15T13:31:23.579Z",
+    "total_price": "50000.00",
+    "status": "Paid",
+    "shipped_time": null,
+    "out_for_delivery_time": null,
+    "delivered_time": null,
+    "courier_name": null
+  }
+},
+{
+  "model": "home.order",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "fname": "leena",
+    "lname": "sitaa",
+    "email": "example@email.com",
+    "phone": "7383790196",
+    "address": "krupakant",
+    "city": "ahmedabad",
+    "state": "Gujarat",
+    "country": "India",
+    "pincode": "123",
+    "order_date": "2025-04-17T03:02:04.790Z",
+    "payment_mode": "Paid by Razorpay",
+    "payment_id": "pay_QJy8s7PEfxnVD9",
+    "message": null,
+    "tracking_no": "ORD3907799",
+    "created_at": "2025-04-17T03:02:04.790Z",
+    "total_price": "50000.00",
+    "status": "Paid",
+    "shipped_time": null,
+    "out_for_delivery_time": null,
+    "delivered_time": null,
+    "courier_name": null
+  }
+},
+{
+  "model": "home.order",
+  "pk": 6,
+  "fields": {
+    "user": 1,
+    "fname": "leena",
+    "lname": "sitaa",
+    "email": "example@email.com",
+    "phone": "7383790196",
+    "address": "krupakant",
+    "city": "ahmedabad",
+    "state": "Gujarat",
+    "country": "India",
+    "pincode": "123",
+    "order_date": "2025-04-17T04:17:41.765Z",
+    "payment_mode": "Paid by Razorpay",
+    "payment_id": "pay_QJzQiraNF7UICl",
+    "message": null,
+    "tracking_no": "ORD7632536",
+    "created_at": "2025-04-17T04:17:41.765Z",
+    "total_price": "50000.00",
+    "status": "Paid",
+    "shipped_time": null,
+    "out_for_delivery_time": null,
+    "delivered_time": null,
+    "courier_name": null
+  }
+},
+{
+  "model": "home.order",
+  "pk": 7,
+  "fields": {
+    "user": 4,
+    "fname": "leena",
+    "lname": "prajapati",
+    "email": "leenaprajapati004@gmail.com",
+    "phone": "7383790196",
+    "address": "krupakant",
+    "city": "ahmedabad",
+    "state": "Gujarat",
+    "country": "India",
+    "pincode": "789",
+    "order_date": "2025-04-17T06:34:08.969Z",
+    "payment_mode": "Paid by Razorpay",
+    "payment_id": "pay_QK1kwE17rW84wh",
+    "message": null,
+    "tracking_no": "ORD2332613",
+    "created_at": "2025-04-17T06:34:08.969Z",
+    "total_price": "125000.00",
+    "status": "Paid",
+    "shipped_time": null,
+    "out_for_delivery_time": null,
+    "delivered_time": null,
+    "courier_name": null
+  }
+},
+{
+  "model": "home.feedback",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "product": 1,
+    "rating": 4,
+    "comment": "wwqwerty",
+    "created_at": "2025-04-15T16:07:06.243Z"
+  }
+},
+{
+  "model": "home.feedback",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "product": 1,
+    "rating": 5,
+    "comment": "it very good product",
+    "created_at": "2025-04-16T17:19:53.311Z"
+  }
+},
+{
+  "model": "home.feedback",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "product": 2,
+    "rating": 5,
+    "comment": "good",
+    "created_at": "2025-04-17T04:20:40.162Z"
+  }
+},
+{
+  "model": "home.wishlist",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "product": 1,
+    "added_at": "2025-04-15T15:56:22.426Z"
+  }
+},
+{
+  "model": "home.wishlist",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "product": 2,
+    "added_at": "2025-04-16T06:56:02.703Z"
+  }
+},
+{
+  "model": "home.payment",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "order": 1,
+    "amount": "50000.00",
+    "payment_method": "Razorpay",
+    "payment_status": "Completed",
+    "payment_date": "2025-04-14T12:30:45.441Z"
+  }
+},
+{
+  "model": "home.payment",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "order": 2,
+    "amount": "150000.00",
+    "payment_method": "Razorpay",
+    "payment_status": "Completed",
+    "payment_date": "2025-04-15T08:33:36.441Z"
+  }
+},
+{
+  "model": "home.payment",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "order": 3,
+    "amount": "150000.00",
+    "payment_method": "Razorpay",
+    "payment_status": "Completed",
+    "payment_date": "2025-04-15T12:34:17.841Z"
+  }
+},
+{
+  "model": "home.payment",
+  "pk": 4,
+  "fields": {
+    "user": 1,
+    "order": 4,
+    "amount": "50000.00",
+    "payment_method": "Razorpay",
+    "payment_status": "Completed",
+    "payment_date": "2025-04-15T13:31:23.603Z"
+  }
+},
+{
+  "model": "home.payment",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "order": 5,
+    "amount": "50000.00",
+    "payment_method": "Razorpay",
+    "payment_status": "Completed",
+    "payment_date": "2025-04-17T03:02:04.808Z"
+  }
+},
+{
+  "model": "home.payment",
+  "pk": 6,
+  "fields": {
+    "user": 1,
+    "order": 6,
+    "amount": "50000.00",
+    "payment_method": "Razorpay",
+    "payment_status": "Completed",
+    "payment_date": "2025-04-17T04:17:41.786Z"
+  }
+},
+{
+  "model": "home.payment",
+  "pk": 7,
+  "fields": {
+    "user": 4,
+    "order": 7,
+    "amount": "125000.00",
+    "payment_method": "Razorpay",
+    "payment_status": "Completed",
+    "payment_date": "2025-04-17T06:34:09.024Z"
+  }
+},
+{
+  "model": "home.address",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "full_name": "Leena",
+    "phone": "7383790196",
+    "last_name": "prajapati",
+    "email": "leenaprajapati004@gmail.com",
+    "street_address": "krupakant",
+    "city": "ahmedabad",
+    "state": "gujarat",
+    "postal_code": 123,
+    "country": "Australia",
+    "is_default": false
+  }
+},
+{
+  "model": "home.address",
+  "pk": 2,
+  "fields": {
+    "user": 4,
+    "full_name": "Leena",
+    "phone": "7383790196",
+    "last_name": "prajapati",
+    "email": "leenaprajapati004@gmail.com",
+    "street_address": "krupakant",
+    "city": "ahmedabad",
+    "state": "gujarat",
+    "postal_code": 789,
+    "country": "Australia",
+    "is_default": true
+  }
+},
+{
+  "model": "home.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "fname": "fname",
+    "last_name": "",
+    "phone": "7383790196",
+    "email": "example@email.com",
+    "address": "street",
+    "city": "city",
+    "state": "state",
+    "country": "country",
+    "pincode": "0"
+  }
+},
+{
+  "model": "home.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "fname": "fname",
+    "last_name": "",
+    "phone": null,
+    "email": "example@email.com",
+    "address": "street",
+    "city": "city",
+    "state": "state",
+    "country": "country",
+    "pincode": "0"
+  }
+},
+{
+  "model": "home.userprofile",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "fname": "fname",
+    "last_name": "",
+    "phone": null,
+    "email": "example@email.com",
+    "address": "street",
+    "city": "city",
+    "state": "state",
+    "country": "country",
+    "pincode": "0"
+  }
+},
+{
+  "model": "home.userprofile",
+  "pk": 4,
+  "fields": {
+    "user": 4,
+    "fname": "fname",
+    "last_name": "",
+    "phone": "7383790196",
+    "email": "example@email.com",
+    "address": "street",
+    "city": "city",
+    "state": "state",
+    "country": "country",
+    "pincode": "0"
+  }
+},
+{
+  "model": "home.subscriber",
+  "pk": 1,
+  "fields": {
+    "email": "leenaprajapati004@gmail.com",
+    "subscribed_at": "2025-04-16T07:02:04.593Z"
+  }
+},
+{
+  "model": "home.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": 1,
+    "quantity": 1,
+    "price": 50000.0
+  }
+},
+{
+  "model": "home.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "product": 1,
+    "quantity": 3,
+    "price": 50000.0
+  }
+},
+{
+  "model": "home.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 3,
+    "product": 1,
+    "quantity": 3,
+    "price": 50000.0
+  }
+},
+{
+  "model": "home.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 4,
+    "product": 1,
+    "quantity": 1,
+    "price": 50000.0
+  }
+},
+{
+  "model": "home.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 5,
+    "product": 1,
+    "quantity": 1,
+    "price": 50000.0
+  }
+},
+{
+  "model": "home.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 6,
+    "product": 1,
+    "quantity": 1,
+    "price": 50000.0
+  }
+},
+{
+  "model": "home.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 7,
+    "product": 1,
+    "quantity": 2,
+    "price": 50000.0
+  }
+},
+{
+  "model": "home.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 7,
+    "product": 2,
+    "quantity": 1,
+    "price": 25000.0
+  }
+}
+]

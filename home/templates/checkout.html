@@ -1,0 +1,293 @@
+{%extends "base.html"%}
+{%load static%}
+     
+{%block content%}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<body class="preload-wrapper">
+
+    <!-- Scroll Top -->
+    <button id="scroll-top">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_15741_24194)">
+            <path d="M3 11.9175L12 2.91748L21 11.9175H16.5V20.1675C16.5 20.3664 16.421 20.5572 16.2803 20.6978C16.1397 20.8385 15.9489 20.9175 15.75 20.9175H8.25C8.05109 20.9175 7.86032 20.8385 7.71967 20.6978C7.57902 20.5572 7.5 20.3664 7.5 20.1675V11.9175H3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_15741_24194">
+            <rect width="24" height="24" fill="white" transform="translate(0 0.66748)"/>
+            </clipPath>
+            </defs>
+        </svg> 
+    </button>
+
+    <!-- preload -->
+    <div class="preload preload-container">
+        <div class="preload-logo">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <!-- /preload -->
+     
+    <div id="wrapper">
+        <!-- Top Bar-->
+      
+        <!-- page-title -->
+        <div class="page-title" style="background-image: url({% static 'images/slider/slider-jewelry2.jpg' %});">
+            <div class="container">
+                <h3 class="heading text-center">Check Out</h3>
+                <ul class="breadcrumbs d-flex align-items-center justify-content-center">
+                    <li><a class="link" href="index.html">Homepage</a></li>
+                    <li><i class="icon-arrRight"></i></li>
+                    <li><a class="link" href="shop-default-grid.html">Shop</a></li>
+                    <li><i class="icon-arrRight"></i></li>
+                    <li>View Cart</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /page-title -->
+        <!-- Section checkout -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="flat-spacing tf-page-checkout">
+                            <div class="wrap">
+                               
+                            </div>
+                            
+                            
+                            <form method="POST" action="{% url 'placeorder' %}" class="info-box">
+                                {% csrf_token %}
+                                <div class="grid-2">
+                                    <input type="text" required value="{{request.user.first_name}}" name="fname" placeholder="First Name*">
+                                    <input type="text" required value="{{request.user.last_name}}"name="lname" placeholder="Last Name*">
+                                </div>
+                                <div class="grid-2">
+                                    <input type="email" required   value="{{request.user.email}}" name="email" placeholder="Email Address*">
+                                    <input type="text" required  value="{{userprofile.phone}}" name="phone" placeholder="Phone Number*">
+                                </div>
+                                <h4>Shipping Details</h4>
+                                <div class="tf-select">
+                                    <select class="text-title" value="{{userprofile.country}}"   name="country" required>
+                                        <option value="India" {% if default_address.country == "India" %}selected{% endif %}>India</option>
+                                        <option value="Canada" {% if default_address.country == "Canada" %}selected{% endif %}>Canada</option>
+                                        <option value="United States" {% if default_address.country == "United States" %}selected{% endif %}>United States</option>
+                                    </select>
+                                </div>
+                                <div class="grid-2">
+                                    <input type="text" required value="{{ default_address.city }}" name="city" placeholder="Town/City*">
+                                    <input type="text" required value="{{ default_address.street_address}}" name="address" placeholder="Street">
+                                </div>
+                                <div class="grid-2">
+                                    <select name="state"  value="{{userprofile.state}}"  class="text-title" required>
+                                        <option value="Gujarat" {% if default_address.state == "Gujarat" %}selected{% endif %}>Gujarat</option>
+                                        <option value="Rajasthan" {% if default_address.state == "Rajasthan" %}selected{% endif %}>Rajasthan</option>
+                                        <option value="Maharashtra" {% if default_address.state == "Maharashtra" %}selected{% endif %}>Maharashtra</option>
+                                        <option value="Madhya Pradesh" {% if default_address.state == "Madhya Pradesh" %}selected{% endif %}>Madhya Pradesh</option>
+                                        <option value="Punjab" {% if default_address.state == "Punjab" %}selected{% endif %}>Punjab</option>                                        </option>
+
+                                        
+                                    </select>
+                                    <input type="text" required  value="{{default_address.postal_code}}" name="pincode" placeholder="Postal Code*">
+                                </div>
+                                <div class="wrap">
+                                {% comment %} <h5 class="title">Choose payment Option:</h5> {% endcomment %}
+                               
+                                
+                                  <div class="payment-box" id="payment-box">
+                                        {% comment %} <div class="payment-item">
+                                            <label for="razorpay-method" class="payment-header collapsed">
+                                                <input type="radio" required  name="payment_method" class="tf-check-rounded" id="razorpay-method" required>
+                                                <span class="text-title">Razorpay</span>
+                                            </label>
+                                        </div>  {% endcomment %}
+                                    
+                                        {% comment %} <div class="payment-item">
+                                            <label for="delivery-method" class="payment-header collapsed">
+                                                <input type="radio" name="payment_method" class="tf-check-rounded" id="delivery-method">
+                                                <span class="text-title">Cash on delivery</span>
+                                            </label>
+                                        </div> {% endcomment %}
+                                    </div>
+                                    <button type="button" class="tf-btn btn-reset paywithRazorpay">Pay Now Razorpay</button>
+                                
+                                
+                                
+                         
+                               
+                            </form> 
+                            
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-xl-1">
+                        <div class="line-separation"></div>
+                    </div>
+                    
+                    <div class="col-xl-5">
+                        <div class="flat-spacing flat-sidebar-checkout">
+                            <div class="sidebar-checkout-content">
+                                <h5 class="title">Shopping Cart</h5>
+                                <div class="list-product">
+                                    {% for item in cart_items %}
+                                    <div class="item-product">
+                                        <a href="/productDetail/{{ item.product.slug }} " class="img-product">
+                                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                        </a>
+                                        <div class="content-box">
+                                            <div class="info">
+                                                <a href=" /productDetail/{{ item.product.slug }}" class="name-product link text-title">
+                                                    {{ item.product.name }}
+                                                </a>
+                                                <div class="variant text-caption-1 text-secondary">
+                                                    <span class="size">{{ item.size.size }}</span>
+                                                    <!-- Modify if size/color is stored in your model -->
+                                                </div>
+                                            </div>
+                                            <div class="total-price text-button">
+                                                <span class="count">{{ item.quantity }}</span>X
+                                                <span class="price">₹{{ item.product.price }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% empty %}
+                                    <p>Your cart is empty.</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="sec-discount">
+                                    <div class="swiper-wrapper">
+                                        {% for coupon in coupons %}
+                                        <div class="swiper-slide">
+                                            <div class="box-discount">
+                                                <div class="discount-top">
+                                                    <div class="discount-off">
+                                                        <div class="text-caption-1">Discount</div>
+                                                        <span class="sale-off text-btn-uppercase">{{ coupon.discount_percentage }}% OFF</span>
+                                                    </div>
+                                                    <div class="discount-from">
+                                                        <p class="text-caption-1">For all orders <br> from ₹{{ coupon.min_order_amount }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="discount-bot">
+                                                    <span class="text-btn-uppercase coupon-code">{{ coupon.code }}</span>
+                                                    <button class="tf-btn apply-coupon-btn" data-code="{{ coupon.code }}">
+                                                        <span class="text">Apply Code</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                
+                                    <!-- Coupon Input Field -->
+                                    <div class="ip-discount-code">
+                                        <input type="text" id="coupon-input" placeholder="Enter voucher code">
+                                        <button class="tf-btn" id="apply-coupon"><span class="text">Apply Code</span></button>
+                                    </div>
+                                    <p>Discount code is only used for orders with a total value over ₹500.00</p>
+                                </div>
+                                
+                                <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    function applyCoupon(couponCode) {
+                                        let totalAmount = parseFloat(document.getElementById("total-price").value);  
+                                        
+                                        console.log("🔹 Applying Coupon:", couponCode);
+                                        console.log("🔹 Total Order Amount (JS):", totalAmount);
+                                
+                                        if (!couponCode) {
+                                            alert("❌ Please enter a coupon code!");
+                                            return;
+                                        }
+                                
+                                        fetch("{% url 'apply_coupon' %}", {
+                                            method: "POST",
+                                            headers: {
+                                                "X-CSRFToken": "{{ csrf_token }}",
+                                                "Content-Type": "application/x-www-form-urlencoded"
+                                            },
+                                            body: `coupon_code=${encodeURIComponent(couponCode)}&total_amount=${encodeURIComponent(totalAmount)}`
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            console.log("🔹 Response from Backend:", data);
+                                            if (data.success) {
+                                                alert(`✅ Coupon Applied! Discount: ₹${data.discount}`);
+                                
+                                                // Update the discount value
+                                                document.getElementById("discount-value").innerText = `₹${data.discount}`;
+                                
+                                                // Calculate new total
+                                                let newTotal = totalAmount - data.discount;
+                                                document.getElementById("total-amount").innerText = `₹${newTotal.toFixed(2)}`;
+                                
+                                                // Update hidden total value
+                                                document.getElementById("total-price").value = newTotal.toFixed(2);
+                                            } else {
+                                                alert(`❌ ${data.message}`);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error("❌ Error:", error);
+                                            alert("❌ Something went wrong! Check console.");
+                                        });
+                                    }
+                                
+                                    // Apply coupon via input field
+                                    document.getElementById("apply-coupon").addEventListener("click", function () {
+                                        let couponCode = document.getElementById("coupon-input").value.trim();
+                                        applyCoupon(couponCode);
+                                    });
+                                
+                                    // Apply coupon when clicking "Apply Code" button on a coupon
+                                    document.querySelectorAll(".apply-coupon-btn").forEach(button => {
+                                        button.addEventListener("click", function () {
+                                            let couponCode = this.getAttribute("data-code");
+                                            document.getElementById("coupon-input").value = couponCode;
+                                            applyCoupon(couponCode);
+                                        });
+                                    });
+                                });
+                                </script>
+                                
+                                <div class="sec-total-price">
+                                    <div class="top">
+                                        <div class="item d-flex align-items-center justify-content-between text-button">
+                                            <span>Shipping</span>
+                                            <span>₹{{ shipping }}</span>
+                                        </div>
+                                        <div class="item d-flex align-items-center justify-content-between text-button">
+                                            <span>Discount</span>
+                                            <span id="discount-value">₹0</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom">
+                                        <h5 class="d-flex justify-content-between">
+                                            <span>Total</span>
+                                            <span id="total-amount">₹{{ total }}</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                
+                                <input type="hidden" id="total-price" value="{{ total }}">
+                                
+                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!-- /Section checkout -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+{%endblock%} 

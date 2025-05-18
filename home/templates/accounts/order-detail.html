@@ -1,0 +1,442 @@
+{%extends "base.html"%}
+{%load static%}
+     
+{%block content%}
+
+        <!-- page-title -->
+        <div class="page-title" style="background-image: url(images/section/page-title.jpg);">
+            <div class="container-full">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="heading text-center">My Account</h3>
+                        <ul class="breadcrumbs d-flex align-items-center justify-content-center">
+                            <li>
+                                <a class="link" href="index.html">Homepage</a>
+                            </li>
+                            <li>
+                                <i class="icon-arrRight"></i>
+                            </li>
+                            <li>
+                                <a class="link" href="#">Pages</a>
+                            </li>
+                            <li>
+                                <i class="icon-arrRight"></i>
+                            </li>
+                            <li>
+                                My Account
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page-title -->
+
+        <div class="btn-sidebar-account">
+            <button data-bs-toggle="offcanvas" data-bs-target="#mbAccount" aria-controls="offcanvas"><i class="icon icon-squares-four"></i></button>
+        </div>
+
+        <!-- my-account -->
+        <section class="flat-spacing">
+            <div class="container">
+                <div class="my-account-wrap">
+                    <div class="wrap-sidebar-account">
+                        <div class="wrap-sidebar-account">
+                            <div class="sidebar-account">
+                                <div class="account-avatar">
+                                    <div class="image">
+                                        <img src="{% static 'images/user.png' %}" alt="User Image">
+                                        
+                                    </div>
+                                    <h6 class="mb_4">{{ user.first_name }}</h6>
+                                    <div class="body-text-1">{{ user.email }}</div>
+                                </div>
+                                <ul class="my-account-nav">
+                                    <li>
+                                        <span class="my-account-nav-item active">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            Account Details
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <a href="{%url 'order'%}" class="my-account-nav-item">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M16.5078 10.8734V6.36686C16.5078 5.17166 16.033 4.02541 15.1879 3.18028C14.3428 2.33514 13.1965 1.86035 12.0013 1.86035C10.8061 1.86035 9.65985 2.33514 8.81472 3.18028C7.96958 4.02541 7.49479 5.17166 7.49479 6.36686V10.8734M4.11491 8.62012H19.8877L21.0143 22.1396H2.98828L4.11491 8.62012Z" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            Your Orders
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{%url 'address'%}" class="my-account-nav-item">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            My Address
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{%url 'logout'%}" class="my-account-nav-item">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M16 17L21 12L16 7" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M21 12H9" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} <div class="my-account-content">
+                        <div class="account-order-details">
+                            <div class="wd-form-order">
+                                <div class="order-head">
+                                    <figure class="img-product">
+                                        <img src="images/products/womens/women-1.jpg" alt="product">
+                                    </figure>
+                                    <div class="content">
+                                        <div class="badge">In Progress</div>
+                                        <h6 class="mt-8 fw-5">Order #17493</h6>
+                                    </div>
+                                </div>
+                                <div class="tf-grid-layout md-col-2 gap-15">
+                                    <div class="item">
+                                        <div class="text-2 text_black-2">Item</div>
+                                        <div class="text-2 mt_4 fw-6">Fashion</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text-2 text_black-2">Courier</div>
+                                        <div class="text-2 mt_4 fw-6">Ribbed modal T-shirt</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text-2 text_black-2">Start Time</div>
+                                        <div class="text-2 mt_4 fw-6">04 September 2024, 13:30:23</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text-2 text_black-2">Address</div>
+                                        <div class="text-2 mt_4 fw-6">1234 Fashion Street, Suite 567, New York</div>
+                                    </div>
+                                </div>
+                                <div class="widget-tabs style-3 widget-order-tab">
+                                    <ul class="widget-menu-tab">
+                                        <li class="item-title active">
+                                            <span class="inner">Order History</span>
+                                        </li>
+                                        <li class="item-title">
+                                            <span class="inner">Item Details</span>
+                                        </li>
+                                        <li class="item-title">
+                                            <span class="inner">Courier</span>
+                                        </li>
+                                        <li class="item-title">
+                                            <span class="inner">Receiver</span>
+                                        </li>
+                                    </ul>
+                                    <div class="widget-content-tab">
+                                        <div class="widget-content-inner active">
+                                            <div class="widget-timeline">
+                                                <ul class="timeline">
+                                                    <li>
+                                                        <div class="timeline-badge success"></div>
+                                                        <div class="timeline-box">
+                                                            <a class="timeline-panel" href="javascript:void(0);">
+                                                                <div class="text-2 fw-6">Product Shipped</div>
+                                                                <span>10/07/2024 4:30pm</span>
+                                                            </a>
+                                                            <p><strong>Courier Service : </strong>FedEx World Service Center</p>
+                                                            <p><strong>Estimated Delivery Date : </strong>12/07/2024</p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="timeline-badge success"></div>
+                                                        <div class="timeline-box">
+                                                            <a class="timeline-panel" href="javascript:void(0);">
+                                                                <div class="text-2 fw-6">Product Shipped</div>
+                                                                <span>10/07/2024 4:30pm</span>
+                                                            </a>
+                                                            <p><strong>Tracking Number : </strong>2307-3215-6759</p>
+                                                            <p><strong>Warehouse : </strong>T-Shirt 10b</p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="timeline-badge"></div>
+                                                        <div class="timeline-box">
+                                                            <a class="timeline-panel" href="javascript:void(0);">
+                                                                <div class="text-2 fw-6">Product Packaging</div>
+                                                                <span>12/07/2024 4:34pm</span>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="timeline-badge"></div>
+                                                        <div class="timeline-box">
+                                                            <a class="timeline-panel" href="javascript:void(0);">
+                                                                <div class="text-2 fw-6">Order Placed</div>
+                                                                <span>11/07/2024 2:36pm</span>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-inner">
+                                            <div class="order-head">
+                                                <figure class="img-product">
+                                                    <img src="images/products/womens/women-1.jpg" alt="product">
+                                                </figure>
+                                                <div class="content">
+                                                    <div class="text-2 fw-6">Ribbed modal T-shirt</div>
+                                                    <div class="mt_4"><span class="fw-6">Price :</span> $28.95</div>
+                                                    <div class="mt_4"><span class="fw-6">Size :</span> XL</div>
+                                                </div>
+                                            </div>
+                                            <ul>
+                                                <li class="d-flex justify-content-between text-2">
+                                                    <span>Total Price</span>
+                                                    <span class="fw-6">$28.95</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between text-2 mt_4 pb_8 line-bt">
+                                                    <span>Total Discounts</span>
+                                                    <span class="fw-6">$10</span>
+    
+                                                </li>
+                                                <li class="d-flex justify-content-between text-2 mt_8">
+                                                    <span>Order Total</span>
+                                                    <span class="fw-6">$18.95</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="widget-content-inner">
+                                            <p>Our courier service is dedicated to providing fast, reliable, and secure delivery solutions tailored to meet your needs. Whether you're sending documents, parcels, or larger shipments, our team ensures that your items are handled with the utmost care and delivered on time. With a commitment to customer satisfaction, real-time tracking, and a wide network of routes, we make it easy for you to send and receive packages both locally and internationally. Choose our service for a seamless and efficient delivery experience.</p>
+                                        </div>
+                                        <div class="widget-content-inner">
+                                            <p class="text-2 text-success">Thank you Your order has been received</p>
+                                            <ul class="mt_20">
+                                                <li>Order Number : <span class="fw-7">#17493</span></li>
+                                                <li>Date : <span class="fw-7"> 17/07/2024, 02:34pm</span></li>
+                                                <li>Total : <span class="fw-7">$18.95</span></li>
+                                                <li>Payment Methods : <span class="fw-7">Cash on Delivery</span></li>
+    
+                                            </ul>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> {% endcomment %}
+                    <div class="my-account-content">
+                        <div class="account-order-details">
+                            <div class="wd-form-order">
+                                <div class="order-head">
+                                    <figure class="img-product">
+                                        <img src="{{ order_items.0.product.image.url }}" alt="product">
+                                    </figure>
+                                    <div class="content">
+                                        <div class="badge">{{ order.status }}</div>
+                                        <h6 class="mt-8 fw-5">Order #{{ order.tracking_no }}</h6>
+                                    </div>
+                                </div>
+                                <div class="tf-grid-layout md-col-2 gap-15">
+                                    <div class="item">
+                                        <div class="text-2 text_black-2">Item</div>
+                                        <div class="text-2 mt_4 fw-6">{{ order_items.0.product.category }}</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text-2 text_black-2">Courier</div>
+                                        <div class="text-2 mt_4 fw-6">{{ order_items.0.product.name }}</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text-2 text_black-2">Start Time</div>
+                                        <div class="text-2 mt_4 fw-6">{{ order.created_at }}</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text-2 text_black-2">Address</div>
+                                        <div class="text-2 mt_4 fw-6">{{ order.address }}</div>
+                                    </div>
+                                </div>
+                                <div class="widget-timeline">
+                                    <ul class="timeline">
+                                        <li>
+                                            <div class="timeline-badge success"></div>
+                                            <div class="timeline-box">
+                                                <div class="text-2 fw-6">Order Placed</div>
+                                                <span>{{ order.created_at }}</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-badge {% if order.status == 'Shipped' or order.status == 'Out For Delivery' or order.status == 'Completed' %}success{% endif %}"></div>
+                                            <div class="timeline-box">
+                                                <div class="text-2 fw-6">Product Shipped</div>
+                                                <span>{{ order.shipped_time|default:"Pending" }}</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-badge {% if order.status == 'Out For Delivery' or order.status == 'Completed' %}success{% endif %}"></div>
+                                            <div class="timeline-box">
+                                                <div class="text-2 fw-6">Out For Delivery</div>
+                                                <span>{{ order.out_for_delivery_time|default:"Pending" }}</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-badge {% if order.status == 'Completed' %}success{% endif %}"></div>
+                                            <div class="timeline-box">
+                                                <div class="text-2 fw-6">Delivered</div>
+                                                <span>{{ order.delivered_time|default:"Pending" }}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function updateOrderTracking(trackingNo) {
+                            fetch(`/track-order/${trackingNo}/`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.status) {
+                                        document.querySelector('.badge').innerText = data.status;
+                                    }
+                                    document.querySelector(".timeline li:nth-child(2) .timeline-box span").innerText = data.shipped_time;
+                                    document.querySelector(".timeline li:nth-child(3) .timeline-box span").innerText = data.out_for_delivery_time;
+                                    document.querySelector(".timeline li:nth-child(4) .timeline-box span").innerText = data.delivered_time;
+                    
+                                    // Update badges dynamically
+                                    if (data.status === "Shipped") {
+                                        document.querySelector(".timeline li:nth-child(2) .timeline-badge").classList.add("success");
+                                    }
+                                    if (data.status === "Out For Delivery") {
+                                        document.querySelector(".timeline li:nth-child(3) .timeline-badge").classList.add("success");
+                                    }
+                                    if (data.status === "Completed") {
+                                        document.querySelector(".timeline li:nth-child(4) .timeline-badge").classList.add("success");
+                                    }
+                                });
+                        }
+                    
+                        setInterval(() => {
+                            updateOrderTracking("{{ order.tracking_no }}");
+                        }, 10000); // Refresh every 10 seconds
+                    </script>
+                </div>
+            </div>
+        </section>
+        <!-- /my-account -->
+
+       
+        
+  
+    <!-- modal ask_question -->
+    <div class="modal modalCentered fade tf-product-modal modal-part-content" id="ask_question">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="header">
+                    <div class="demo-title">Ask a question</div>
+                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+                </div>
+                <div class="overflow-y-auto">
+                    <form class="">
+                        <fieldset class="">
+                            <label >Name *</label>
+                            <input type="text" placeholder="" class="" name="text" tabindex="2" value=""
+                                aria-required="true" required="">
+                        </fieldset>
+                        <fieldset class="">
+                            <label >Email *</label>
+                            <input type="email" placeholder="" class="" name="text" tabindex="2" value=""
+                                aria-required="true" required="">
+                        </fieldset>
+                        <fieldset class="">
+                            <label >Phone number</label>
+                            <input type="number" placeholder="" class="" name="text" tabindex="2" value=""
+                                aria-required="true" required="">
+                        </fieldset>
+                        <fieldset class="">
+                            <label >Message</label>
+                            <textarea name="message" rows="4" placeholder="" class="" tabindex="2" aria-required="true"
+                                required=""></textarea>
+                        </fieldset>
+                        <button type="submit" class="btn-style-2 w-100"><span class="text">Send</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /modal ask_question -->
+
+    <!-- modal delivery_return -->
+    <div class="modal modalCentered fade tf-product-modal modal-part-content" id="delivery_return">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="header">
+                    <div class="demo-title">Shipping & Delivery</div>
+                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+                </div>
+                <div class="overflow-y-auto">
+                    <div class="tf-product-popup-delivery">
+                        <div class="title">Delivery</div>
+                        <p class="text-paragraph">All orders shipped with UPS Express.</p>
+                        <p class="text-paragraph">Always free shipping for orders over US $250.</p>
+                        <p class="text-paragraph">All orders are shipped with a UPS tracking number.</p>
+                    </div>
+                    <div class="tf-product-popup-delivery">
+                        <div class="title">Returns</div>
+                        <p class="text-paragraph">Items returned within 14 days of their original shipment date in same
+                            as new condition will be eligible for a full refund or store credit.</p>
+                        <p class="text-paragraph">Refunds will be charged back to the original form of payment used for
+                            purchase.</p>
+                        <p class="text-paragraph">Customer is responsible for shipping charges when making returns and
+                            shipping/handling fees of original purchase is non-refundable.</p>
+                        <p class="text-paragraph">All sale items are final purchases.</p>
+                    </div>
+                    <div class="tf-product-popup-delivery">
+                        <div class="title">Help</div>
+                        <p class="text-paragraph">Give us a shout if you have any other questions and/or concerns.</p>
+                        <p class="text-paragraph">Email: <a href="mailto:contact@domain.com"
+                                ><span
+                                    class="__cf_email__">contact@domain.com</span></a></p>
+                        <p class="text-paragraph mb-0">Phone: +1 (23) 456 789</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /modal delivery_return -->
+
+    <!-- modal share social -->
+    <div class="modal modalCentered fade tf-product-modal modal-part-content" id="share_social">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="header">
+                    <div class="demo-title">Share</div>
+                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+                </div>
+                <div class="overflow-y-auto">
+                    <ul class="tf-social-icon d-flex gap-10">
+                        <li><a href="#" class="box-icon social-facebook bg_line"><i class="icon icon-fb"></i></a></li>
+                        <li><a href="#" class="box-icon social-twiter bg_line"><i class="icon icon-x"></i></a></li>
+                        <li><a href="#" class="box-icon social-instagram bg_line"><i class="icon icon-instagram"></i></a></li>
+                        <li><a href="#" class="box-icon social-tiktok bg_line"><i class="icon icon-tiktok"></i></a></li>
+                        <li><a href="#" class="box-icon social-pinterest bg_line"><i class="icon icon-pinterest"></i></a></li>
+                    </ul>
+                    <form class="form-share"  method="post" accept-charset="utf-8">
+                        <fieldset>
+                            <input type="text" value="https://themesflat.co/html/modave/" tabindex="0" aria-required="true">
+                        </fieldset>
+                        <div class="button-submit">
+                            <button class="tf-btn radius-4 btn-fill" type="button"><span class="text">Copy</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /modal share social -->
+    
+{%endblock%}
