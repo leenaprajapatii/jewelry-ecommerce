@@ -1,3 +1,7 @@
+
+import os
+import dj_database_url
+
 from pathlib import Path
 from decouple import config
 import os
@@ -16,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'os.getenv("SECRET_KEY")'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['*']  # Later replace with Render URL
 
 ALLOWED_HOSTS = []
 
@@ -93,6 +98,7 @@ WSGI_APPLICATION = 'jewelry.wsgi.application'
 
 DATABASES = {
     'default': {
+            'default': dj_database_url.config(default='sqlite:///db.sqlite3'),
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'jewelryy',
             'USER': 'root',
@@ -139,6 +145,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT =[BASE_DIR/'static']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 
 import os
