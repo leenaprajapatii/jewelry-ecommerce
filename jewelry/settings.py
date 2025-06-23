@@ -21,16 +21,15 @@ SECRET_KEY = 'os.getenv("SECRET_KEY")'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['*']  # Later replace with Render URL
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hariom-jewelry.onrender.com', 'www.hariom-jewelry.onrender.com']
 
 
 # settings.py
 
 EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
 EMAIL_HOST = os.getenv("EMAIL_HOST")
-EMAIL_PORT =  int(os.getenv("EMAIL_PORT"))
+# EMAIL_PORT =  int(os.getenv("EMAIL_PORT"))
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == 'True'
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD") 
@@ -66,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'jewelry.urls'
