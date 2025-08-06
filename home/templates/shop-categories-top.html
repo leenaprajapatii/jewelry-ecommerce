@@ -6,7 +6,6 @@
    <div class="container-full">
       <div class="row">
          <div class="col-12">
-            
             <ul class="breadcrumbs d-flex align-items-center justify-content-center">
                <li>
                   <a class="link" href="{%url 'home'%}">Homepage</a>
@@ -50,11 +49,6 @@
       {% endfor %}
    </div>
 </section>
-
-
-
-
-
 <!-- /Categories -->
 <!-- Section product -->
 <section class="flat-spacing pt-0">
@@ -67,76 +61,8 @@
                <p class="text-caption-1">Shop sale items only</p>
             </div>
          </div>
-        
-         {% comment %} <ul class="tf-control-layout">
-            <li class="tf-view-layout-switch sw-layout-list list-layout" data-value-layout="list">
-               <div class="item">
-                  <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <circle cx="3" cy="6" r="2.5" stroke="#181818"/>
-                     <rect x="7.5" y="3.5" width="12" height="5" rx="2.5" stroke="#181818"/>
-                     <circle cx="3" cy="14" r="2.5" stroke="#181818"/>
-                     <rect x="7.5" y="11.5" width="12" height="5" rx="2.5" stroke="#181818"/>
-                  </svg>
-               </div>
-            </li>
-            <li class="tf-view-layout-switch sw-layout-2" data-value-layout="tf-col-2">
-               <div class="item">
-                  <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <circle cx="6" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="14" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="6" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="14" cy="14" r="2.5" stroke="#181818"/>
-                  </svg>
-               </div>
-            </li>
-            <li class="tf-view-layout-switch sw-layout-3" data-value-layout="tf-col-3">
-               <div class="item">
-                  <svg class="icon" width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <circle cx="3" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="11" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="19" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="3" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="11" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="19" cy="14" r="2.5" stroke="#181818"/>
-                  </svg>
-               </div>
-            </li>
-            <li class="tf-view-layout-switch sw-layout-4 active" data-value-layout="tf-col-4">
-               <div class="item">
-                  <svg class="icon" width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <circle cx="3" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="11" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="19" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="27" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="3" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="11" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="19" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="27" cy="14" r="2.5" stroke="#181818"/>
-                  </svg>
-               </div>
-            </li>
-            <li class="tf-view-layout-switch sw-layout-5" data-value-layout="tf-col-5">
-               <div class="item">
-                  <svg class="icon" width="38" height="20" viewBox="0 0 38 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <circle cx="3" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="11" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="19" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="27" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="35" cy="6" r="2.5" stroke="#181818"/>
-                     <circle cx="3" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="11" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="19" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="27" cy="14" r="2.5" stroke="#181818"/>
-                     <circle cx="35" cy="14" r="2.5" stroke="#181818"/>
-                  </svg>
-               </div>
-            </li>
-         </ul>
-          {% endcomment %}
       </div>
-    
    </div>
-  
    </div>
    <div class="tf-grid-layout wrapper-shop tf-col-4" id="gridLayout">
       {% for product in products %}
@@ -151,11 +77,6 @@
                <span class="icon icon-heart"></span>
                <span class="tooltip">Wishlist</span>
                </a>
-{% comment %}               
-               <a href="#quickView" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
-               <span class="icon icon-eye"></span>
-               <span class="tooltip">Quick View</span>
-               </a> {% endcomment %}
             </div>
             <div class="list-btn-main">
                <a href="{% url 'add_to_cart' product.id %}"  class="btn-main-product">Add To Cart</a>
@@ -259,7 +180,6 @@
                <li><a href="#" class="categories-item">Earrings <span class="count-cate">(32)</span></a></li>
                <li><a href="#" class="categories-item">Men <span class="count-cate">(13)</span></a></li>
                <li><a href="#" class="categories-item">Charms <span class="count-cate">(48)</span></a></li>
-
             </ul>
          </div>
          <div class="widget-facet facet-price">
@@ -312,7 +232,6 @@
                </fieldset>
             </div>
          </div>
-         
       </div>
       <div class="canvas-bottom">
          <button id="reset-filter" class="tf-btn btn-reset">Reset Filters</button>

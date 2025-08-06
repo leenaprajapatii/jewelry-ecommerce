@@ -5,8 +5,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
 <!-- Fancybox JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
-
 <!-- Product_Main -->
 <section class="flat-spacing">
    <div class="tf-main-product section-image-zoom">
@@ -29,8 +27,6 @@
                                  {% endif %} {% endcomment %}
                               </div>
                               <!-- Additional Images (If Any) -->
-                              
-                           
                               <!--  Related Product Thumbnails -->
                               <div class="swiper tf-product-media-thumbs" 
                                  style="display: flex; flex-direction: column; gap: 10px; max-height: 500px; overflow-y: auto;">
@@ -68,7 +64,6 @@
                                              <i class="icon icon-star"></i>
                                              {% endfor %}
                                           </div>
-                                          
                                        </div>
                                        <div class="tf-product-info-sold">
                                           <i class="icon icon-lightning"></i>
@@ -97,7 +92,6 @@
                                        Size:<span class="text-title variant-picker-label-value">{{ product.size }}</span>
                                     </div>
                                  </div>
-                                 
                                  <div class="variant-picker-values gap12">
                                     {% for size in sizes %}
                                     <input type="radio" name="size1" id="values-{{ size.name }}" value="{{ size.name }}" {% if forloop.first %}checked{% endif %}>
@@ -109,15 +103,13 @@
                                     {% endfor %}
                                  </div>
                               </div>
-                            <div class="tf-product-info-quantity">
+                              <div class="tf-product-info-quantity">
                                  <div class="title mb_12">Quantity:</div>
-                                 
                                  <div class="wg-quantity">
                                     <span type="button" class="btn-quantity btn-decrease">-</span>
                                     <input class="quantity-product" type="number" name="quantity" value="1" min="1" max="999">
                                     <span type="button" class="btn-quantity btn-increase">+</span>
-                                </div>
-                                
+                                 </div>
                               </div>
                               <div>
                                  <div class="tf-product-info-by-btn mb_10">
@@ -125,66 +117,62 @@
                                     {% csrf_token %}
                                     <span>Add to cart -&nbsp;</span>
                                     <span class="tf-qty-price total-price">₹{{ product.price }}</span></a> 
-                                     
-                                     
-                                   
-                                   <script>
-                                   document.addEventListener('DOMContentLoaded', function() {
-                                       // DOM Elements
-                                       const quantityInput = document.querySelector('.quantity-product');
-                                       const priceElement = document.querySelector('.tf-qty-price');
-                                       const quantityContainer = document.querySelector('.wg-quantity');
-                                       
-                                       // Parse base price (with multiple fallbacks)
-                                       const basePrice = parseFloat(
-                                           priceElement.getAttribute('data-base-price') || 
-                                           priceElement.textContent.replace(/[^\d.]/g, '') || 
-                                           '0'
-                                       );
-                                       
-                                       // Update price display
-                                       function updatePrice() {
-                                           let quantity = parseInt(quantityInput.value);
+                                    <script>
+                                       document.addEventListener('DOMContentLoaded', function() {
+                                           // DOM Elements
+                                           const quantityInput = document.querySelector('.quantity-product');
+                                           const priceElement = document.querySelector('.tf-qty-price');
+                                           const quantityContainer = document.querySelector('.wg-quantity');
                                            
-                                           // Validate quantity
-                                           if (isNaN(quantity) || quantity < 1) {
-                                               quantity = 1;
-                                               quantityInput.value = quantity;
+                                           // Parse base price (with multiple fallbacks)
+                                           const basePrice = parseFloat(
+                                               priceElement.getAttribute('data-base-price') || 
+                                               priceElement.textContent.replace(/[^\d.]/g, '') || 
+                                               '0'
+                                           );
+                                           
+                                           // Update price display
+                                           function updatePrice() {
+                                               let quantity = parseInt(quantityInput.value);
+                                               
+                                               // Validate quantity
+                                               if (isNaN(quantity) || quantity < 1) {
+                                                   quantity = 1;
+                                                   quantityInput.value = quantity;
+                                               }
+                                               
+                                               const totalPrice = basePrice * quantity;
+                                               priceElement.textContent = '₹' + totalPrice.toLocaleString('en-IN', {
+                                                   minimumFractionDigits: 2,
+                                                   maximumFractionDigits: 2
+                                               });
                                            }
                                            
-                                           const totalPrice = basePrice * quantity;
-                                           priceElement.textContent = '₹' + totalPrice.toLocaleString('en-IN', {
-                                               minimumFractionDigits: 2,
-                                               maximumFractionDigits: 2
+                                           // Event delegation for buttons
+                                           quantityContainer.addEventListener('click', function(e) {
+                                               if (e.target.classList.contains('btn-decrease')) {
+                                                   quantityInput.stepDown();
+                                                   updatePrice();
+                                               }
+                                               else if (e.target.classList.contains('btn-increase')) {
+                                                   quantityInput.stepUp();
+                                                   updatePrice();
+                                               }
                                            });
-                                       }
-                                       
-                                       // Event delegation for buttons
-                                       quantityContainer.addEventListener('click', function(e) {
-                                           if (e.target.classList.contains('btn-decrease')) {
-                                               quantityInput.stepDown();
+                                           
+                                           // Input validation
+                                           quantityInput.addEventListener('change', function() {
+                                               if (this.value < 1) this.value = 1;
                                                updatePrice();
-                                           }
-                                           else if (e.target.classList.contains('btn-increase')) {
-                                               quantityInput.stepUp();
-                                               updatePrice();
-                                           }
-                                       });
-                                       
-                                       // Input validation
-                                       quantityInput.addEventListener('change', function() {
-                                           if (this.value < 1) this.value = 1;
+                                           });
+                                           
+                                           // Real-time updates
+                                           quantityInput.addEventListener('input', updatePrice);
+                                           
+                                           // Initialize
                                            updatePrice();
                                        });
-                                       
-                                       // Real-time updates
-                                       quantityInput.addEventListener('input', updatePrice);
-                                       
-                                       // Initialize
-                                       updatePrice();
-                                   });
-                                   </script>
-                                    
+                                    </script>
             </form>
             <a href="{% url 'add_to_wishlist' product.id %}" class="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action">
             {% csrf_token %}
@@ -256,168 +244,159 @@
 <!-- Product_Description_Tabs -->
 <section class="">
    <div class="container">
-   <div class="row">
-      <div class="col-12">
-         <div class="widget-tabs style-1">
-            <ul class="widget-menu-tab">
-               <li class="item-title active">
-                  <span class="inner">Description</span>
-               </li>
-               <li class="item-title">
-                  <span class="inner">Customer Reviews</span>
-               </li>
-               <li class="item-title">
-                  <span class="inner">Shipping & Returns</span>
-               </li>
-               <li class="item-title">
-                  <span class="inner">Return Policies</span>
-               </li>
-            </ul>
-            <div class="widget-content-tab">
-               <div class="widget-content-inner active">
-                  <div class="tab-description">
-                     <div class="right">
-                        <div class="letter-1 text-btn-uppercase mb_12">{{ product.name }}</div>
-                        <p class="mb_12 text-secondary">{{ product.long_description }}</p>
+      <div class="row">
+         <div class="col-12">
+            <div class="widget-tabs style-1">
+               <ul class="widget-menu-tab">
+                  <li class="item-title active">
+                     <span class="inner">Description</span>
+                  </li>
+                  <li class="item-title">
+                     <span class="inner">Customer Reviews</span>
+                  </li>
+                  <li class="item-title">
+                     <span class="inner">Shipping & Returns</span>
+                  </li>
+                  <li class="item-title">
+                     <span class="inner">Return Policies</span>
+                  </li>
+               </ul>
+               <div class="widget-content-tab">
+                  <div class="widget-content-inner active">
+                     <div class="tab-description">
+                        <div class="right">
+                           <div class="letter-1 text-btn-uppercase mb_12">{{ product.name }}</div>
+                           <p class="mb_12 text-secondary">{{ product.long_description }}</p>
+                        </div>
                      </div>
                   </div>
-               </div>
-                  
-              
                   <div class="widget-content-inner">
                      <div class="tab-reviews write-cancel-review-wrap">
                         <!-- Review Summary Section -->
                         <div class="tab-reviews-heading">
-                              <div class="top">
-                                 <div class="text-center">
-                                    <!-- Average Rating -->
-                                    <div class="number title-display">{{ product.average_rating|default:"4.9" }}</div>
-                                    <!-- Star Rating -->
-                                    <div class="list-star">
-                                          {% for _ in "12345" %}
-                                             {% if forloop.counter <= product.average_rating %}
-                                                <i class="icon icon-star"></i>
-                                             {% else %}
-                                                <i class="icon icon-star-empty"></i>
-                                             {% endif %}
-                                          {% endfor %}
-                                    </div>
-                                    <!-- Total Ratings -->
-                                    <p>({{ feedback_list.count }} Ratings)</p>
-                                 </div>
-                                 <!-- Rating Breakdown -->
-                                 <div class="rating-score">
-                                    {% for i in "54321" %}
-                                          <div class="item">
-                                             <div class="number-1 text-caption-1">{{ i }}</div>
-                                             <i class="icon icon-star"></i>
-                                             <div class="line-bg">
-                                                <div style="width: {% widthratio product.rating_counts.i feedback_list.count 100 %}%;"></div>
-                                             </div>
-                                             <div class="number-2 text-caption-1">{{ product.rating_counts.i|default:"0" }}</div>
-                                          </div>
+                           <div class="top">
+                              <div class="text-center">
+                                 <!-- Average Rating -->
+                                 <div class="number title-display">{{ product.average_rating|default:"4.9" }}</div>
+                                 <!-- Star Rating -->
+                                 <div class="list-star">
+                                    {% for _ in "12345" %}
+                                    {% if forloop.counter <= product.average_rating %}
+                                    <i class="icon icon-star"></i>
+                                    {% else %}
+                                    <i class="icon icon-star-empty"></i>
+                                    {% endif %}
                                     {% endfor %}
                                  </div>
+                                 <!-- Total Ratings -->
+                                 <p>({{ feedback_list.count }} Ratings)</p>
                               </div>
-                              <!-- Buttons for Writing/Canceling Reviews -->
-                              <div>
-                                 <div class="btn-style-4 text-btn-uppercase letter-1 btn-comment-review btn-cancel-review">Cancel Review</div>
-                                 <div class="btn-style-4 text-btn-uppercase letter-1 btn-comment-review btn-write-review">Write a review</div>
-                              </div>
-                        </div>
-
-                        <!-- Display Existing Reviews -->
-                        <div class="reply-comment style-1 cancel-review-wrap">
-                              <div class="d-flex mb_24 gap-20 align-items-center justify-content-between flex-wrap">
-                                 <h4>{{ feedback_list.count }} Comments</h4>
-                                 <!-- Sort Dropdown -->
-                               
-                              </div>
-                              <!-- Loop Through Feedback -->
-                              <div class="reply-comment-wrap">
-                                 {% for feedback in feedback_list %}
-                                 <div class="reply-comment-item">
-                                    <div class="user">
-                                          <div class="image">
-                                             <img src="{% static 'images/user.png'%}" alt="{{ feedback.user.username }}">
-                                          </div>
-                                          <div>
-                                             <h6>
-                                                <a href="#" class="link">{{ feedback.user.username }}</a>
-                                             </h6>
-                                             <div class="day text-secondary-2 text-caption-1">{{ feedback.created_at|timesince }} ago</div>
-                                          </div>
+                              <!-- Rating Breakdown -->
+                              <div class="rating-score">
+                                 {% for i in "54321" %}
+                                 <div class="item">
+                                    <div class="number-1 text-caption-1">{{ i }}</div>
+                                    <i class="icon icon-star"></i>
+                                    <div class="line-bg">
+                                       <div style="width: {% widthratio product.rating_counts.i feedback_list.count 100 %}%;"></div>
                                     </div>
-                                    <p class="text-secondary">{{ feedback.comment }}</p>
-                                    <!-- Display Star Rating for Each Review -->
-                                    <div class="list-star">
-                                          {% for _ in "12345" %}
-                                             {% if forloop.counter <= feedback.rating %}
-                                                <i class="icon icon-star"></i>
-                                             {% else %}
-                                                <i class="icon icon-star-empty"></i>
-                                             {% endif %}
-                                          {% endfor %}
-                                    </div>
+                                    <div class="number-2 text-caption-1">{{ product.rating_counts.i|default:"0" }}</div>
                                  </div>
                                  {% endfor %}
                               </div>
+                           </div>
+                           <!-- Buttons for Writing/Canceling Reviews -->
+                           <div>
+                              <div class="btn-style-4 text-btn-uppercase letter-1 btn-comment-review btn-cancel-review">Cancel Review</div>
+                              <div class="btn-style-4 text-btn-uppercase letter-1 btn-comment-review btn-write-review">Write a review</div>
+                           </div>
                         </div>
-
-                        <!-- Write Review Form -->
-                        <form class="form-write-review write-review-wrap" method="post" action="{% url 'submit_feedback' product.slug  %}">
-                              {% csrf_token %}
-                              <div class="heading">
-                                 <h4>Write a review:</h4>
-                                 <!-- Star Rating Input -->
-                                 <div class="list-rating-check">
-                                    {% for i in "54321" %}
-                                          <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}">
-                                          <label for="star{{ i }}" title="{{ i }} star"></label>
+                        <!-- Display Existing Reviews -->
+                        <div class="reply-comment style-1 cancel-review-wrap">
+                           <div class="d-flex mb_24 gap-20 align-items-center justify-content-between flex-wrap">
+                              <h4>{{ feedback_list.count }} Comments</h4>
+                              <!-- Sort Dropdown -->
+                           </div>
+                           <!-- Loop Through Feedback -->
+                           <div class="reply-comment-wrap">
+                              {% for feedback in feedback_list %}
+                              <div class="reply-comment-item">
+                                 <div class="user">
+                                    <div class="image">
+                                       <img src="{% static 'images/user.png'%}" alt="{{ feedback.user.username }}">
+                                    </div>
+                                    <div>
+                                       <h6>
+                                          <a href="#" class="link">{{ feedback.user.username }}</a>
+                                       </h6>
+                                       <div class="day text-secondary-2 text-caption-1">{{ feedback.created_at|timesince }} ago</div>
+                                    </div>
+                                 </div>
+                                 <p class="text-secondary">{{ feedback.comment }}</p>
+                                 <!-- Display Star Rating for Each Review -->
+                                 <div class="list-star">
+                                    {% for _ in "12345" %}
+                                    {% if forloop.counter <= feedback.rating %}
+                                    <i class="icon icon-star"></i>
+                                    {% else %}
+                                    <i class="icon icon-star-empty"></i>
+                                    {% endif %}
                                     {% endfor %}
                                  </div>
                               </div>
-                              <div class="mb_32">
-                                 <!-- Review Title -->
-                                 <div class="mb_8">Review Title</div>
-                                 <fieldset class="mb_20">
-                                    <input type="text" placeholder="Give your review a title" name="title" required>
-                                 </fieldset>
-                                 <!-- Review Comment -->
-                                 <div class="mb_8">Review</div>
-                                 <fieldset class="d-flex mb_20">
-                                    <textarea rows="4" placeholder="Write your comment here" name="comment" required></textarea>
-                                 </fieldset>
-                                 <!-- User Details -->
-                                 <div class="cols mb_20">
-                                    <fieldset>
-                                          <input type="text" placeholder="Your Name (Public)" name="name" required>
-                                    </fieldset>
-                                    <fieldset>
-                                          <input type="email" placeholder="Your email (private)" name="email" required>
-                                    </fieldset>
-                                 </div>
-                                 <!-- Save Details Checkbox -->
-                                 <div class="d-flex align-items-center check-save">
-                                    <input type="checkbox" name="save_details" id="check1">
-                                    <label class="text-secondary text-caption-1" for="check1">Save my name, email, and website in this browser for the next time I comment.</label>
-                                 </div>
+                              {% endfor %}
+                           </div>
+                        </div>
+                        <!-- Write Review Form -->
+                        <form class="form-write-review write-review-wrap" method="post" action="{% url 'submit_feedback' product.slug  %}">
+                           {% csrf_token %}
+                           <div class="heading">
+                              <h4>Write a review:</h4>
+                              <!-- Star Rating Input -->
+                              <div class="list-rating-check">
+                                 {% for i in "54321" %}
+                                 <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}">
+                                 <label for="star{{ i }}" title="{{ i }} star"></label>
+                                 {% endfor %}
                               </div>
-                              <!-- Submit Button -->
-                              
-                              <div style="width: 100%; margin-top: 20px; display: block; position: relative; top: 0; clear: both; float: none;">
-                                 <div style="display: flex; justify-content: center;">
-                                   <button class="text-btn-uppercase" type="submit" style="padding: 10px 30px; font-weight: bold;">
-                                     Submit Reviews
-                                   </button>
-                                 </div>
+                           </div>
+                           <div class="mb_32">
+                              <!-- Review Title -->
+                              <div class="mb_8">Review Title</div>
+                              <fieldset class="mb_20">
+                                 <input type="text" placeholder="Give your review a title" name="title" required>
+                              </fieldset>
+                              <!-- Review Comment -->
+                              <div class="mb_8">Review</div>
+                              <fieldset class="d-flex mb_20">
+                                 <textarea rows="4" placeholder="Write your comment here" name="comment" required></textarea>
+                              </fieldset>
+                              <!-- User Details -->
+                              <div class="cols mb_20">
+                                 <fieldset>
+                                    <input type="text" placeholder="Your Name (Public)" name="name" required>
+                                 </fieldset>
+                                 <fieldset>
+                                    <input type="email" placeholder="Your email (private)" name="email" required>
+                                 </fieldset>
                               </div>
-                               
-            
+                              <!-- Save Details Checkbox -->
+                              <div class="d-flex align-items-center check-save">
+                                 <input type="checkbox" name="save_details" id="check1">
+                                 <label class="text-secondary text-caption-1" for="check1">Save my name, email, and website in this browser for the next time I comment.</label>
+                              </div>
+                           </div>
+                           <!-- Submit Button -->
+                           <div style="width: 100%; margin-top: 20px; display: block; position: relative; top: 0; clear: both; float: none;">
+                              <div style="display: flex; justify-content: center;">
+                                 <button class="text-btn-uppercase" type="submit" style="padding: 10px 30px; font-weight: bold;">
+                                 Submit Reviews
+                                 </button>
+                              </div>
+                           </div>
                         </form>
                      </div>
                   </div>
-                        
                   <div class="widget-content-inner">
                      <div class="tab-shipping">
                         <div class="w-100">
@@ -425,7 +404,6 @@
                            <p class="mb_12">One delivery fee to most locations (check our Orders & Delivery page)</p>
                            <p class="">Free returns within 14 days</p>
                         </div>
-                        
                         <div class="w-100">
                            <div class="text-btn-uppercase mb_12">Estimated delivery</div>
                            <p class="mb_6 font-2">Express: May 10 - May 17</p>
@@ -436,7 +414,6 @@
                            <div>
                               <a href="#" class="link text-secondary text-decoration-underline mb_6 font-2">Orders & delivery</a>
                            </div>
-                           
                         </div>
                      </div>
                   </div>
